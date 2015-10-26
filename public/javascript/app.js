@@ -1,14 +1,7 @@
 (function() {
 	'use strict';
-<<<<<<< HEAD
 	angular.module('app', ['ui.router', "ngMaterial"])
 	.config(Config);
-
-=======
-	angular.module('app', ['ui.router', 'ngMaterial'])
-
-	.config(Config);
->>>>>>> 769bb448efb479ee657fe5f73fdb1fc6a3f276b2
 	function Config($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
