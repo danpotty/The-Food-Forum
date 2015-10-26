@@ -7,25 +7,25 @@
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
-<body>
+<body ng-controller="GlobalController as vm">
 	<ui-view></ui-view>
 	<nav>
-		<button type="button" ng-click="" class="btn btn-success left">Login</button>
+		<button type="button" ui-sref="Login_Register" class="btn btn-success left">Login</button>
+		<a ui-sref="Home" id="navLink">
 		<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
 		<h3>The Food Forum</h3>
-		<button type="button" ng-click="" class="btn btn-info right">Register</button>
+		</a>
+		<button type="button" ui-sref="Login_Register" class="btn btn-info right">Register</button>
 	</nav>
 	<!-- Ext Libs -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.js"></script>
 	<!-- Global Src -->
 	<script src="/javascript/app.js"></script>
 	<!-- Factories -->
-
 	<script src="/javascript/services/GlobalFactory.js"></script>
 	<script src="/javascript/services/UserFactory.js"></script>
 	<!-- Controllers -->
@@ -36,5 +36,4 @@
 
 
 </body>
-
 </html>
