@@ -5,15 +5,14 @@
 
 	function AddTopicController() {
 		var vm = this;
-
-		vm.topics = {
+		vm.topics = [{
 			topicTitle: "test",
 			author: "test"
-		};
-		vm.comments = {
+		}];
+		vm.comments = [{
 			user: "test",
 			userComment: "test"
-		};
+		}];
 
 		vm.createTopic = function(){
 			GlobalFactory.createTopic(vm.topic).then(function(){

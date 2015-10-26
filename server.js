@@ -3,8 +3,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 3000;
-var passport = require('passport');
-var mongoose = require('mongoose');
+// var passport = require('passport');
+// var mongoose = require('mongoose');
 
 
 
@@ -23,10 +23,10 @@ app.set('view options', {
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
-var userRoutes = require('./routes/userRoutes');
-var topicRoutes = require('./routes/topicRoutes');
+// var userRoutes = require('./routes/userRoutes');
+// var topicRoutes = require('./routes/topicRoutes');
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
