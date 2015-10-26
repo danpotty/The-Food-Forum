@@ -2,31 +2,53 @@
 @import url(https://fonts.googleapis.com/css?family=Catamaran);
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
+
 /* Globals */
 body, html {
   margin: 0;
+  padding-bottom: 5em;
   text-align: center;
   font-family: 'Catamaran', sans-serif;
 }
+hr {
+  width: 75%;
+  margin: 3em auto;
+  border-color: #f90;
+}
+a h3:hover {
+  color: #f90;
+}
+
 
 /* Headings */
 h1 {
+  margin: 1.5em auto 0 auto;
+  font-family: 'Indie Flower', cursive;
+  color: #fff;
+  font-size: 3em;
   margin: 1.5em auto .5em auto;
   font-family: 'Indie Flower', cursive;
+
 }
 h3 {
+  display: inline-block;
   margin: 1.5em auto;
   font-family: 'Indie Flower', cursive;
+  color: #fff;
 }
+
 
 /* Inputs */
 button {
   font-family: 'Indie Flower', cursive;
 }
 
+
 /* Nav */
 nav {
   width: 100%;
+  border-top: solid 1px #f90;
+  box-shadow: 0px 0px 10px rgba(0,0,0,.5);
   background-color: #000;
   position: fixed;
   bottom: 0;
@@ -38,8 +60,11 @@ nav img {
   margin: .5em auto 0 auto;
 }
 nav h3 {
+  display: block;
   margin: .5em auto 0 auto;
 }
+
+
 /* Classes */
 .left {
   position: absolute;
@@ -58,15 +83,40 @@ nav h3 {
   font-size: 1.5em;
 }
 .section {
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
+  position: relative;
 }
+.section img {
+  display: inline;
+  position: absolute;
+  left: 1em;
+  height: 5em;
+  width: 5em;
+  margin: 1em;
+}
+.section:hover {
+  background: #555;
+  cursor: pointer;
+}
+.forumContainer {
+  border: solid 1px #777;
+  margin: 1em auto;
+}
+.btn-info {
+  background: #f90;
+}
+.btn-info:hover {
+  background: #E60;
+}
+
+
 /* IDs */
 #homeIcon {
   width: 3em;
   height: 3em;
   margin: 1em;
 }
-#forumContainer {
-  border: solid 1px #fff;
+#navLink {
+  text-decoration: none;
 }
