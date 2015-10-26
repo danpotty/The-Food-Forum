@@ -26,6 +26,9 @@ h1 {
   font-family: 'Indie Flower', cursive;
   color: #fff;
   font-size: 3em;
+  margin: 1.5em auto .5em auto;
+  font-family: 'Indie Flower', cursive;
+
 }
 h3 {
   display: inline-block;

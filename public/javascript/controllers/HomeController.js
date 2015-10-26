@@ -5,6 +5,8 @@
 
 	function HomeController() {
 		var vm = this;
-		vm.title = 'Welcome To The Food Forum!';
+
+
+
 	}
 })();
