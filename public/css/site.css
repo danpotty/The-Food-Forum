@@ -1,0 +1,72 @@
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Catamaran);
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+/* Globals */
+body, html {
+  margin: 0;
+  text-align: center;
+  font-family: 'Catamaran', sans-serif;
+}
+
+/* Headings */
+h1 {
+  margin: 1.5em auto .5em auto;
+  font-family: 'Indie Flower', cursive;
+}
+h3 {
+  margin: 1.5em auto;
+  font-family: 'Indie Flower', cursive;
+}
+
+/* Inputs */
+button {
+  font-family: 'Indie Flower', cursive;
+}
+
+/* Nav */
+nav {
+  width: 100%;
+  background-color: #000;
+  position: fixed;
+  bottom: 0;
+  height: 7em;
+}
+nav img {
+  height: 3em;
+  width: 3em;
+  margin: .5em auto 0 auto;
+}
+nav h3 {
+  margin: .5em auto 0 auto;
+}
+/* Classes */
+.left {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  height: 3em;
+  width: 8em;
+  font-size: 1.5em;
+}
+.right {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  height: 3em;
+  width: 8em;
+  font-size: 1.5em;
+}
+.section {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+/* IDs */
+#homeIcon {
+  width: 3em;
+  height: 3em;
+  margin: 1em;
+}
+#forumContainer {
+  border: solid 1px #fff;
+}
