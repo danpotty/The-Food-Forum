@@ -5,8 +5,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 var passport = require('passport');
 var mongoose = require('mongoose');
-
-
+require("./models/UserModel");
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
