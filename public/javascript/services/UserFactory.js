@@ -24,7 +24,7 @@
 				setUser();
 				q.resolve(res.data);
 			});
-return q.promise;
+			return q.promise;
 		};
 
 		o.logout = function(){
@@ -81,6 +81,14 @@ if(token){
 }
 
 	if(getToken()) setUser();
+
+	o.getTopics = function(author) {
+		var q = $q.defer();
+		$http.get('/subforum/' + author).then(function(res){
+			q.resolve(res.data);
+		});
+		return q.promise;
+	};
 
 
 		return o;

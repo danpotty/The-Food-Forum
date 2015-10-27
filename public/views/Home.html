@@ -1,11 +1,11 @@
 <div ng-controller="HomeController as vm" class="container">
-		<h1>Welcome To The Food Forum</h1>
-		<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" id="homeIcon" />
-		<br>
+	<h1>Welcome To The Food Forum</h1>
+	<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" id="homeIcon" />
+	<br>
 	<hr>
 	<div class="forumContainer">
-		<div class="sectionHead">
-			<h2>Recent Topics</h2>
+		<div class="section noclick nohighlight">
+			<!-- <h2>Recent Topics</h2>
 		</div>
 		<div class="section">
 			<h3>Some Topic</h3>
@@ -15,6 +15,11 @@
 		</div>
 		<div class="section">
 			<h3>Some Completely Other Topic</h3>
+		</div> -->
+			<p style="width: 75%; margin: 1em auto 2em auto;">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+				Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
+				lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+				facilisis luctus, metus</p>
 		</div>
 	</div>
 	<hr>
@@ -27,7 +32,7 @@
 			<h3>General Food Discussion</h3>
 		</div>
 		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Recipes');">
-			<img src="https://pixabay.com/static/uploads/photo/2014/12/21/23/28/recipe-575434_640.png" class="img img-responsive" alt="Recipe Pic" />
+			<img src="http://cakestyle.tv/wp-content/uploads/2013/04/Recipe-Box-home-page-icon.png" class="img img-responsive" alt="Recipe Pic" />
 			<h3>Recipes</h3>
 		</div>
 		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Restaurant Reviews');">
