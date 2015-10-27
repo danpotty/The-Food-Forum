@@ -1,13 +1,20 @@
-<div ng-controller='AddTopicController as vm'>
+<div ng-controller='AddTopicController as vm' class="container">
+  <br>
+  <h1 style="color: #333;">{{ vm.subForum }}</h1>
+  <hr>
     <div>
-      <button type="button" class="btn btn-info" ng-click='vm.createTopic()'>Create new topic</button>
+      <button type="button" class="btn btn-info" ui-sref="CreateTopic">Create New Topic</button>
+      <button type="button" class="btn btn-danger" ui-sref="Home">Go Back</button>
     </div>
-    <div class="row" ng-repeat='z in vm.topics'>
-      <div class='col-sm-2'>
-        <h1>{{z.topicTitle}}</h1>
+    <hr>
+    <div style="position: relative;" ng-repeat='z in vm.Topics'>
+      <div class="row section" ng-click="vm.setCurrentTopic(z);" ui-sref="Topic" >
+        <div>
+          <h3>{{z.title}}</h3>
+          <h5>{{z.body}}</h5>
+        </div>
       </div>
-      <div class="col-sm-10">
-        <h4>{{z.author}}</h4>
-      </div>
+      <div class="deleteButton" ng-click="vm.deleteTopic(z);"></div>
     </div>
+
 </div>

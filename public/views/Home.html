@@ -1,60 +1,76 @@
 <div ng-controller="HomeController as vm" class="container">
-	<h1>Welcome To The Food Forum</h1>
-	<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" id="homeIcon"/>
-	<br>
-	<br>
-	<div class="row">
-		<div class="col-sm-4">
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+		<h1>Welcome To The Food Forum</h1>
+		<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" id="homeIcon" />
+		<br>
+	<hr>
+	<div class="forumContainer">
+		<div class="sectionHead">
+			<h2>Recent Topics</h2>
 		</div>
-		<div class="col-sm-4">
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+		<div class="section">
+			<h3>Some Topic</h3>
 		</div>
-		<div class="col-sm-4">
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+		<div class="section">
+			<h3>Some Other Topic</h3>
+		</div>
+		<div class="section">
+			<h3>Some Completely Other Topic</h3>
 		</div>
 	</div>
 	<hr>
 	<div class="forumContainer">
-		<div class="section" ui-sref="SubForum">
+		<div class="sectionHead">
+			<h2>General Cooking</h2>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('General Food Discussion');">
 			<img src="http://pngimg.com/upload/banana_PNG842.png" class="img img-responsive" alt="Banana Pic" />
 			<h3>General Food Discussion</h3>
 		</div>
-		<div class="section" ui-sref="SubForum">
-			<img src="http://orion-poland.pl/products/70/102.png" class="img img-responsive" alt="TV Pic" />
-			<h3>Television and Cooking Shows</h3>
-		</div>
-		<div class="section" ui-sref="SubForum">
-			<img src="http://www.speakers.co.uk/media/pictures/profile/GORRAM.png" class="img img-responsive" alt="Chef Pic" />
-			<h3>Famous Chef Discussion</h3>
-		</div>
-	</div>
-	<hr>
-	<div class="forumContainer" ui-sref="SubForum">
-		<div class="section">
-			<img src="http://www.ihop.com/menus/main-menu/combos/-/media/ihop/MenuItems/Breakfast%20Combos/Split%20Decision%20Breakfast/Split_Decision_Breakfast.png?mh=367" class="img img-responsive" alt="Breakfast Pic" />
-			<h3>Breakfast Foods</h3>
-		</div>
-		<div class="section" ui-sref="SubForum">
-			<img src="http://spicypickle.net/images/menu/tuscan.png" class="img img-responsive" alt="Lunch Pic" />
-			<h3>Lunch Foods</h3>
-		</div>
-		<div class="section" ui-sref="SubForum">
-			<img src="http://ihopbonita.com/wp-content/uploads/2014/05/chix_pasta_dinner1.png" class="img img-responsive" alt="Dinner Pic" />
-			<h3>Dinner Foods</h3>
-		</div>
-	</div>
-	<hr>
-	<div class="forumContainer" ui-sref="SubForum">
-		<div class="section">
-			<img src="http://www.foodmanagementsearch.com/images/Hospitality_and_Restaurant.png" class="img img-responsive" alt="Waiter Pic" />
-			<h3>Restaurant Reviews</h3>
-		</div>
-		<div class="section" ui-sref="SubForum">
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Recipes');">
 			<img src="https://pixabay.com/static/uploads/photo/2014/12/21/23/28/recipe-575434_640.png" class="img img-responsive" alt="Recipe Pic" />
 			<h3>Recipes</h3>
 		</div>
-		<div class="section" ui-sref="SubForum">
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Restaurant Reviews');">
+			<img src="http://www.foodmanagementsearch.com/images/Hospitality_and_Restaurant.png" class="img img-responsive" alt="Waiter Pic" />
+			<h3>Restaurant Reviews</h3>
+		</div>
+	</div>
+
+	<div class="forumContainer">
+		<div class="sectionHead">
+			<h2>Types Of Cooking</h2>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Breakfast');">
+			<img src="http://www.ihop.com/menus/main-menu/combos/-/media/ihop/MenuItems/Breakfast%20Combos/Split%20Decision%20Breakfast/Split_Decision_Breakfast.png?mh=367" class="img img-responsive" alt="Breakfast Pic" />
+			<h3>Breakfast</h3>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Lunch');">
+			<img src="http://spicypickle.net/images/menu/tuscan.png" class="img img-responsive" alt="Lunch Pic" />
+			<h3>Lunch</h3>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Dinner');">
+			<img src="http://ihopbonita.com/wp-content/uploads/2014/05/chix_pasta_dinner1.png" class="img img-responsive" alt="Dinner Pic" />
+			<h3>Dinner</h3>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Desserts');">
+			<img src="http://www.ihop.com/menus/main-menu/desserts/-/media/ihop/MenuItems/Desserts/Fruit%20Crepe/Fruit_Crepe.png?mh=367" class="img img-responsive" alt="Dessert Pic" />
+			<h3>Desserts</h3>
+		</div>
+	</div>
+
+	<div class="forumContainer">
+		<div class="sectionHead">
+			<h2>Other Topics</h2>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Television and Cooking Shows');">
+			<img src="http://orion-poland.pl/products/70/102.png" class="img img-responsive" alt="TV Pic" />
+			<h3>Television and Cooking Shows</h3>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Famous Chefs');">
+			<img src="http://www.speakers.co.uk/media/pictures/profile/GORRAM.png" class="img img-responsive" alt="Chef Pic" />
+			<h3>Famous Chefs</h3>
+		</div>
+		<div class="section" ui-sref="SubForum" ng-click="vm.setSubForum('Kitchen Safety');">
 			<img src="http://eshetti.1goalc.co.za/wp-content/uploads/2013/10/Warning_icon.png" class="img img-responsive" alt="Safety Pic" />
 			<h3>Kitchen Safety</h3>
 		</div>

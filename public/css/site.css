@@ -1,5 +1,5 @@
 /* Fonts */
-@import url(https://fonts.googleapis.com/css?family=Catamaran);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
 
@@ -8,12 +8,31 @@ body, html {
   margin: 0;
   padding-bottom: 5em;
   text-align: center;
-  font-family: 'Catamaran', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  background: url(http://www.naturalfoodretailers.net/sites/default/files/styles/home_page_image_header_style/public/home_page/header/images/iStock_000026263485Large.jpg?itok=72vjvE2F);
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: -2;
+}
+body::after {
+  content: "";
+  background: #fff;
+  opacity: .8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  position: absolute;
+  min-height: 55vw;
+  background-size: cover;
+  background-attachment: fixed;
 }
 hr {
   width: 75%;
   margin: 3em auto;
-  border-color: #f90;
+  border: 1px #f90 solid;
 }
 a h3:hover {
   color: #f90;
@@ -22,19 +41,24 @@ a h3:hover {
 
 /* Headings */
 h1 {
-  margin: 1.5em auto 0 auto;
   font-family: 'Indie Flower', cursive;
-  color: #fff;
+  color: #333;
   font-size: 3em;
-  margin: 1.5em auto .5em auto;
+  margin: 0 auto;
+  padding: 1.5em 0 .5em 0;
   font-family: 'Indie Flower', cursive;
 
+}
+h2 {
+  font-family: 'Indie Flower', cursive;
 }
 h3 {
   display: inline-block;
   margin: 1.5em auto;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Raleway', sans-serif;
   color: #fff;
+  font-weight: 100;
+  font-size: 1.2em;
 }
 
 
@@ -42,7 +66,31 @@ h3 {
 button {
   font-family: 'Indie Flower', cursive;
 }
-
+input {
+  margin: .5em auto;
+  display: block;
+  width: 50%;
+  height: 4em;
+  padding: .5em;
+  font-family: 'Raleway', sans-serif;
+  outline: none;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  border: solid 1px #fff;
+}
+textarea {
+  width: 50%;
+  margin: .5em auto;
+  resize: none;
+  height: 15em;
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  padding: .5em;
+  outline: none;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  border: solid 1px #fff;
+}
 
 /* Nav */
 nav {
@@ -57,7 +105,7 @@ nav {
 nav img {
   height: 3em;
   width: 3em;
-  margin: .5em auto 0 auto;
+  margin: 1em auto 0 auto;
 }
 nav h3 {
   display: block;
@@ -66,6 +114,9 @@ nav h3 {
 
 
 /* Classes */
+.container {
+  position: relative;
+}
 .left {
   position: absolute;
   left: 1em;
@@ -82,10 +133,18 @@ nav h3 {
   width: 8em;
   font-size: 1.5em;
 }
-.section {
+.forumContainer {
+  border: solid 1px #777;
+  box-shadow: 0px 0px 15px rgba(0,0,0,.2);
+  margin: 1em auto;
+}
+.section, .topicContainer {
+  background: rgba(0,0,0,.75);
   border-top: 1px solid #777;
   border-bottom: 1px solid #777;
   position: relative;
+  padding-top: 1em;
+  min-height: 5.5em;
 }
 .section img {
   display: inline;
@@ -93,15 +152,24 @@ nav h3 {
   left: 1em;
   height: 5em;
   width: 5em;
-  margin: 1em;
+  margin: 0;
 }
 .section:hover {
-  background: #555;
+  background: rgba(0,0,0,.3);
   cursor: pointer;
 }
-.forumContainer {
-  border: solid 1px #777;
-  margin: 1em auto;
+.sectionHead {
+  background: rgba(0,0,0,.75);
+  padding: 1em;
+  height: 5.5em;
+}
+.sectionHead h2 {
+  color: #f90;
+}
+.sectionHead img {
+  display: inline;
+  max-width: 6em;
+  max-height: 6em;
 }
 .btn-info {
   background: #f90;
@@ -109,14 +177,38 @@ nav h3 {
 .btn-info:hover {
   background: #E60;
 }
-
+.topic {
+  border: solid 1px white;
+  margin: 1em auto;
+  width: 50%;
+  background: rgba(0,0,0,.75);
+}
+.topic:hover {
+  background: #777;
+  cursor: pointer;
+}
+.navLink {
+  text-decoration: none !important;     /*      :(       */
+  font-family: 'Indie Flower', cursive;
+}
+.deleteButton {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: #fff;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/musthave/256/Remove.png");
+  background-size: cover;
+  z-index: 99999;
+}
 
 /* IDs */
 #homeIcon {
-  width: 3em;
-  height: 3em;
-  margin: 1em;
-}
-#navLink {
-  text-decoration: none;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  width: 5em;
+  height: 5em;
+  margin: .5em;
 }

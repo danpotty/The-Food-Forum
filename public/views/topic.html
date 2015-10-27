@@ -1,14 +1,43 @@
-<div ng-controller='CommentController as vm'>
-    <div>
-      <button type="button" class="btn btn-info" ng-click='vm.createComment()'>Create new comment</button>
+<div ng-controller='AddTopicController as vm' class="container">
+  <br>
+  <div class="row topicContainer">
+
+    <div ng-if="vm.currentTopic.url">
+      <img ng-src="vm.currentTopic.url" alt="Topic Picture" />
     </div>
-    <div class="row" ng-repeat='z in vm.comments'>
-      <div class='col-sm-2'>
-        <h3>{{z.user}}</h3>
-      </div>
-      <div class="col-sm-10">
-        <h4>{{z.userComment}}</h4>
-        <button type="button" class="btn btn-warning" ng-click='vm.editComment()'>Edit Comment</button>
+
+    <div ng-if="!vm.currentTopic.url">
+      <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" />
+    </div>
+
+    <div>
+      <h3 style="color:#f90;">{{ vm.currentTopic.title }}</h3>
+      <h4>melonfan1974</h4>
+      <br>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+        Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
+        lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus</p>
+      <br>
+    </div>
+
+  </div>
+
+    <hr>
+    <div ng-show="!showComment">
+      <button type="button" class="btn btn-info" ng-click='showComment = true;'>Create new comment</button>
+      <button type="button" class="btn btn-danger" ui-sref="SubForum">Go Back</button>
+    </div>
+    <div ng-show="showComment">
+      <button type="button" class="btn btn-success" ng-click='showComment = false;'>Save Comment</button>
+      <button type="button" class="btn btn-danger" ng-click="showComment = false;">Cancel</button>
+      <textarea placeholder="Comment" ng-model="vm.comments.userComment"></textarea>
+    </div>
+    <hr>
+    <div class="row section" ng-repeat='z in vm.comments'>
+      <div>
+        <h3>{{z.userComment}}</h3>
+        <h5>{{z.user}}</h5>
       </div>
     </div>
 </div>
