@@ -5,8 +5,7 @@
 
 	function GlobalController(UserFactory,$state) {
 		var nav = this;
-		nav.hasLogin = true;
-		var user = {};
+		nav.user = {};
 		nav.status = UserFactory.status;
 
 		nav.loginUser = function(){
@@ -16,6 +15,7 @@
 		};
 
 		nav.registerUser = function(){
+			console.log("from controller at the start");
 			UserFactory.registerUser(nav.user).then(function(){
 				$state.go("Home");
 			});

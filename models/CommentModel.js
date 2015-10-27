@@ -8,4 +8,4 @@ var CommentPostSchema = new mongoose.Schema({
   spam: Number
 });
 
-mongoose.model('TopicPost', TopicPostSchema);
+mongoose.model('CommentPost', CommentPostSchema);

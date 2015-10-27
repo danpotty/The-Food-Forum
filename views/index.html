@@ -7,15 +7,15 @@
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
-<body ng-controller="GlobalController as vm">
+<body ng-controller="GlobalController as nav">
 	<ui-view></ui-view>
 	<nav>
-		<button type="button" ui-sref="Login_Register" class="btn btn-success left">Login</button>
+		<button type="button" ui-sref="Login" class="btn btn-success left">Login</button>
 		<a ui-sref="Home" id="navLink">
 		<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
 		<h3>The Food Forum</h3>
 		</a>
-		<button type="button" ui-sref="Login_Register" class="btn btn-info right">Register</button>
+		<button type="button" ui-sref="Register" class="btn btn-info right">Register</button>
 	</nav>
 	<!-- Ext Libs -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -28,6 +28,8 @@
 	<!-- Factories -->
 	<script src="/javascript/services/GlobalFactory.js"></script>
 	<script src="/javascript/services/UserFactory.js"></script>
+	<script src="/javascript/services/AuthInterceptor.js"></script>
+
 	<!-- Controllers -->
 	<script src="/javascript/controllers/AddTopicController.js"></script>
 	<script src="/javascript/controllers/EditCommentController.js"></script>

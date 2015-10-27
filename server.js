@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== "production"){
+		require("dotenv").load();
+}
+
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -6,6 +10,13 @@ var port = process.env.PORT || 3000;
 var passport = require('passport');
 var mongoose = require('mongoose');
 require("./models/UserModel");
+require("./models/TopicModel");
+require("./models/CommentModel");
+require("./config/passport");
+
+
+mongoose.connect(process.env.MONGO_STRING);
+
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
@@ -26,12 +37,16 @@ app.use(passport.initialize());
 
 var userRoutes = require('./routes/userRoutes');
 var topicRoutes = require('./routes/topicRoutes');
+// var commentRoutes = require('./routes/commentRoutes');
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
 	res.render('index');
 });
 
+app.use("/api/user", userRoutes);
+app.use("/api/topic", topicRoutes);
+// app.use("/api/topic", commentRoutes);
 
 var server = app.listen(port, function() {
 	var host = server.address().address;
