@@ -11,6 +11,7 @@
 
 		nav.loginUser = function(){
 			UserFactory.loginUser(nav.user).then(function(){
+				console.log(nav.loggedIn);
 				$state.go("Home");
 				nav.loggedIn = true;
 			});
