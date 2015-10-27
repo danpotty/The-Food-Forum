@@ -3,12 +3,13 @@
 	angular.module('app')
 	.controller('AddTopicController', AddTopicController);
 
-	function AddTopicController(GlobalFactory, CommentFactory, $state) {
+	function AddTopicController(GlobalFactory, UserFactory, CommentFactory, $state) {
 		var vm = this;
 		vm.comments = {};
 		vm.newTopic = {};
 		vm.Topics = {};
 		vm.editting = false;
+		vm.voted = false;
 		vm.selectedIndex = 0;
 		vm.currentTopic = GlobalFactory.currentTopic;
 		vm.subForum = GlobalFactory.subForum;
@@ -43,6 +44,9 @@
 		// Create Topic
 		vm.createTopic = function(){
 			vm.newTopic.subForum = vm.subForum;
+			vm.newTopic.author = UserFactory.status.username;
+			vm.newTopic.createdOn = new Date();
+
 			GlobalFactory.createTopic(vm.newTopic).then(function(){
 				vm.getTopics(vm.subForum);
 				$state.go('SubForum');
@@ -78,6 +82,8 @@
 		// Create Comment
 		vm.createComment = function(){
 			vm.newComment.topicid = vm.currentTopic._id;
+			vm.newComment.author = UserFactory.status.username;
+			vm.newComment.upvote = 0;
 			CommentFactory.createComment(vm.newComment).then(function(){
 				vm.getCommentsByTopic(vm.currentTopic._id);
 				$state.go('Topic');
@@ -99,6 +105,24 @@
 				// Really Don't Need Anything Here Since We Are Updating In Real Time
 			});
 		};
+
+		// ------------------------------------------------------------------
+		// ----------------------Voting ----------------------------------
+
+		// Up Vote
+		vm.upVote = function(id){
+			CommentFactory.upVote(id).then(function(){
+				// Really Don't Need Anything Here Since We Are Updating In Real Time
+			});
+		};
+
+		// Down Vote
+		vm.downVote = function(id){
+			CommentFactory.downVote(id).then(function(){
+				// Really Don't Need Anything Here Since We Are Updating In Real Time
+			});
+		};
+
 
 	}
 })();
