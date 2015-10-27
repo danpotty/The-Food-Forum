@@ -10,12 +10,14 @@
 <body ng-controller="GlobalController as nav">
 	<ui-view></ui-view>
 	<nav>
-		<button type="button" ui-sref="Login_Register" class="btn btn-success left">Login</button>
+		<button ng-show="!nav.loggedIn" type="button" ui-sref="Login" class="btn btn-success left">Login</button>
+		<button ng-show="nav.loggedIn" type="button" ui-sref="Profile" class="btn btn-success left">{{nav.status.username}}</button>
 		<a ui-sref="Home" class="navLink">
 		<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
 		<h3 class="navLink">The Food Forum</h3>
 		</a>
-		<button type="button" ui-sref="Register" class="btn btn-info right">Register</button>
+		<button ng-show="!nav.loggedIn" type="button" ui-sref="Register" class="btn btn-info right">Register</button>
+		<button ng-show="nav.loggedIn" type="button" ng-click="nav.logoutUser()" class="btn btn-danger right">Logout</button>
 	</nav>
 	<!-- Ext Libs -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -32,7 +34,7 @@
 
 	<!-- Controllers -->
 	<script src="/javascript/controllers/AddTopicController.js"></script>
-	<script src="/javascript/controllers/EditCommentController.js"></script>
+	<script src="/javascript/controllers/CommentController.js"></script>
 	<script src="/javascript/controllers/GlobalController.js"></script>
 	<script src="/javascript/controllers/HomeController.js"></script>
 

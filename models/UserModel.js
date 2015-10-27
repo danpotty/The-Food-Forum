@@ -6,7 +6,8 @@ var UserSchema = new mongoose.Schema({
   username: {lowercase: true, trim: true, unique: true, required: true, type: String},
   email: {lowercase: true, trim: true, unique: true, required: true, type: String},
   salt: String,
-  passwordHash: String
+  passwordHash: String,
+
 });
 
 UserSchema.methods.setPassword = function(password){
@@ -15,7 +16,7 @@ UserSchema.methods.setPassword = function(password){
 };
 
 UserSchema.methods.checkPassword = function(password){
-   var passwordHash = crypto.pbkdf2Sync(password, this.salt, 100, 64).toString("hex");
+   var passwordHash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString("hex");
    return (passwordHash === this.passwordHash);
 };
 
