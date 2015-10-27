@@ -10,7 +10,7 @@
 		})
 		.state('CreateTopic',{
 			url: '/createtopic',
-			templateUrl: 'views/createtopic.html'
+			templateUrl: 'views/createTopic.html'
 		}).state('EditComment',{
 			url: '/editcomment',
 			templateUrl: 'views/editComment.html'

@@ -1,1 +1,17 @@
-<h1>test</h1>
+<div class="container" ng-controller='AddTopicController as vm'>
+  <form ng-submit="vm.createTopic(vm.newTopic);">
+    <h1>Create New Topic</h1>
+    <hr>
+    <h4 style="color: #333;">{{ nav.subForum }}</h4>
+    <br>
+    <input type="text" placeholder="Topic***" required ng-model="vm.newTopic.title">
+    <br>
+    <input type="text" placeholder="Image URL" ng-model="vm.newTopic.img">
+    <br>
+    <textarea rows="8" cols="40" placeholder="Body" ng-model="vm.newTopic.body"></textarea>
+    <hr>
+    <button type="submit" class="btn btn-success">Create Topic</button>
+    <button type="button" class="btn btn-danger" ui-sref="SubForum">Cancel</button>
+  </form>
+
+</div>

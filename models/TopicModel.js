@@ -3,9 +3,10 @@ var mongoose = require('mongoose');
 var TopicPostSchema = new mongoose.Schema({
   title: String,
   author: String,
+  subForum: String,
+  body: String,
   date: Date,
-  content: String,
-  image: String
+  url: String
 });
 
-mongoose.model('TopicPost', TopicPostSchema);
+mongoose.model('Topic', TopicPostSchema);

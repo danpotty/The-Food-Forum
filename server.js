@@ -6,6 +6,9 @@ var port = process.env.PORT || 3000;
 var passport = require('passport');
 var mongoose = require('mongoose');
 require("./models/UserModel");
+require("./models/TopicModel");
+
+mongoose.connect("mongodb://localhost/FoodForum");
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
@@ -32,6 +35,14 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
+// Use Topic Routes
+app.use('/subforum/', topicRoutes);
+
+// Handle Errors
+app.use(function(err, req, res, next) {
+	console.log(err);
+	res.status(400).send(err);
+});
 
 var server = app.listen(port, function() {
 	var host = server.address().address;
