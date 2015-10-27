@@ -7,7 +7,7 @@
 		var nav = this;
 		nav.hasLogin = true;
 		var user = {};
-		vm.status = UserFactory.status;
+		nav.status = UserFactory.status;
 
 		nav.loginUser = function(){
 			UserFactory.loginUser(nav.user).then(function(){

@@ -9,4 +9,4 @@ var CommentPostSchema = new mongoose.Schema({
 
 });
 
-mongoose.model('TopicPost', TopicPostSchema);
+mongoose.model('CommentPost', CommentPostSchema);
