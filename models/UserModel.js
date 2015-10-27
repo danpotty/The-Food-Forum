@@ -6,7 +6,8 @@ var UserSchema = new mongoose.Schema({
   username: {lowercase: true, trim: true, unique: true, required: true, type: String},
   email: {lowercase: true, trim: true, unique: true, required: true, type: String},
   salt: String,
-  passwordHash: String
+  passwordHash: String,
+
 });
 
 UserSchema.methods.setPassword = function(password){
