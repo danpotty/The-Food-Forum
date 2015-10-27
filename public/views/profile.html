@@ -1,13 +1,31 @@
-<div layout='column' flex>
-  <div layout='row' flex>
-    <div>
-      <img src='{{nav.user.image}}'/>
-      <button type="button" class="btn btn-info" ng-click="INSERTFUNCTIONHERE">Update Profile Picture</button>
-    </div>
-    <div>
+<div layout='column' layout-padding layout-wrap layout-fill layout-align="start center" flex="100" ng-cloak>
+   <div>
       <h1>{{nav.status.username | uppercase}}'S PROFILE</h1>
-      <h3>Date joined</h3>
-      <h3>Last login</h3>
+   </div>
+  <div layout='row' flex>
+    <div flex="35">
+      <!-- <img src='{{nav.status.profilePic}}' class="img-responsive"/> -->
+      <img src='http://www.foodnavigator-usa.com/var/plain_site/storage/images/publications/food-beverage-nutrition/foodnavigator-usa.com/markets/us-organic-food-market-to-grow-14-from-2013-18/8668340-1-eng-GB/US-organic-food-market-to-grow-14-from-2013-18.jpg' class="img-responsive"/>
+      <button type="button" class="btn btn-info" ng-click="INSERTFUNCTIONHERE()">Update Profile Picture</button>
     </div>
+    <div flex="65" layout-padding="10">
+      <!-- <p>{{nav.status.bio}} <a ng-href="INSERTFUNCTIONHERE()">Edit Bio</a></p> -->
+      <p class="text-left">Cupcake ipsum dolor sit amet. Tiramisu cupcake biscuit icing wafer marzipan. Jelly beans biscuit dragée jelly-o. Sweet muffin gummies jelly beans chupa chups tiramisu. Sesame snaps soufflé cake sugar plum ice cream bear claw powder. Wafer pie gummies. Dessert lollipop oat cake bear claw ice cream candy. Tiramisu muffin cookie. Jelly bear claw toffee dragée tiramisu. <a ng-href="INSERTFUNCTIONHERE()">Edit Bio</a></p>
+      <span>Date joined: {{nav.status.dateJoined | date : shortDate}} 04/14/2015 | Last login: {{nav.status.lastLogin | date : shortDate}} 10/27/2015</span>
+    </div>
+  </div>
+  <div class="text-left">
+     <h3>Recent Topics Posted</h3>
+     <ul>
+        <li>This is a topic that I posted about breakfast</li>
+        <li>This is a topic that I posted about breakfastsdgdfgdgdfgdfgfdgdfg</li>
+        <li>This is a topic that I posted about breakfastdgdfgfdgd</li>
+        <li>This is a topic gfdg</li>
+        <li>This is a topic that I posted about breakfastdgdfgfdgd</li>
+        <li>This is a topic that I posted about breakfasfdsfdsfdsfdsfdsftsdgfdgfdg</li>
+        <li>This is a topic that I posted about breakfastdgdfgfdgd</li>
+        <li>This is a topic that I posted about breakfastdfgfdgfd</li>
+        <li ng-repeat="topic in vm.topics">{{nav.status.topics}}</li>
+     </ul>
   </div>
 </div>

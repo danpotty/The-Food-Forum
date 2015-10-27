@@ -1,5 +1,6 @@
-<div layout="column" layout-padding layout-wrap layout-fill flex="50" ng-cloak>
-      <h1>
+<div layout="column" layout-padding layout-wrap layout-fill layout-align="start center" flex="100" ng-cloak>
+<div  flex="50" >
+         <h1>
          Please sign up.
       </h1>
    <md-content layout-padding>
@@ -7,23 +8,30 @@
          <md-input-container>
             <label>User Name</label>
             <input required name="username" ng-model="nav.user.username">
-         </md-input-container><br/>
+         </md-input-container>
          <md-input-container>
             <label>Email Address</label>
             <input required type="email" name="username" ng-model="nav.user.email">
-         </md-input-container><br/>
+         </md-input-container>
          <md-input-container>
             <label>Password</label>
             <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
-         </md-input-container><br/>
+         </md-input-container>
          <md-input-container>
             <label>Confirm Password</label>
             <input required type="password" name="userPassword" ng-model="nav.user.confirmPassword" minlength="5" />
-         </md-input-container><br/>
-         <div>
+         </md-input-container>
+         <div layout="column">
+            <div>
             <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.email || !nav.user.password || !(nav.user.password === nav.user.confirmPassword)">Register</md-button>
+         </div>
+         <div>
+            <hr>
+            <h6>Already joined our community?</h6>
             <md-button type="button" ui-sref="Login">Login</md-button>
+         </div>
          </div>
       </form>
    </md-content>
+</div>
 </div>

@@ -202,6 +202,9 @@ nav h3 {
   background-size: cover;
   z-index: 99999;
 }
+.text-left {
+   text-align: justify;
+}
 
 /* IDs */
 #homeIcon {
