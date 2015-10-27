@@ -7,6 +7,7 @@
 		var o = {};
 		o.subForum = "Home";
 		o.currentTopic = {};
+		o.currentProfile = {};
 
 		// Track Sub Forum
 		o.setSubForum = function(subforum){
@@ -49,6 +50,13 @@
 			return q.promise;
 		};
 
+		o.editProfile = function(userId, userImage, userBio){
+			var q = $q.defer();
+			$http.put('/api/user/profile').then(function(res){
+				q.resolve();
+			});
+			return q.promise;
+		};
 
 		return o;
 	}

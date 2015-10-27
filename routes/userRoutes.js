@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var passport = require('passport');
+var Topic = mongoose.model('Topic');
 
 router.post("/register", function(req, res, next){
    var user = new User(req.body);
@@ -20,5 +21,18 @@ router.post("/login", function(req, res, next){
       res.send(user.createToken());
    })(req, res, next);
 });
+
+router.get("/:author", function(req, res, next) {
+  Topic.find({subForum: req.params.author}).exec(function(err, result) {
+    if(err) return next(err);
+    res.send(result);
+  });
+});
+
+router.put('/profile', function(req, res, next){
+  User.update({_id: <id>},{bio: <value>, profilePic: <value>})
+});
+
+
 
 module.exports = router;

@@ -1,9 +1,7 @@
 <!-- this will be viewed with ui-view, so ng-controller="GlobalController as vm" which is set on index page -->
 
-<div layout="column" layout-padding layout-wrap layout-fill flex="50" ng-cloak>
-
-<!-- LOGIN -->
-   <md-whiteframe layout="column">
+<div layout="column" layout-padding layout-wrap layout-fill layout-align="start center" flex="100" ng-cloak>
+<div  flex="80" >
          <h1>
             Welcome back!
          </h1>
@@ -17,12 +15,17 @@
                <label>Password</label>
                <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
             </md-input-container>
-            <div layout="right">
+            <div layout="column">
+               <div>
                <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
-               <md-button type="button" ui-sref="Register">Register</md-button>
+            </div>
+            <div>
+               <hr>
+               <h6>Haven't joined our community yet?</h6>
+               <md-button type="button" ui-sref="Register">Sign Up</md-button>
+            </div>
             </div>
          </form>
       </md-content>
-   </md-whiteframe>
-
+</div>
 </div>

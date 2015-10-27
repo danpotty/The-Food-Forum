@@ -226,6 +226,10 @@ nav h3 {
   right: 4em;
   background-image: url("http://findicons.com/files/icons/1609/ose_png/256/arrow_down.png");
 }
+.text-left {
+   text-align: justify;
+}
+
 /* IDs */
 #homeIcon {
   position: absolute;
