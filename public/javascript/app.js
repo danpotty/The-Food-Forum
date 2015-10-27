@@ -3,14 +3,14 @@
 	angular.module('app', ['ui.router', 'ngMaterial'])
 	.config(Config);
 
-	function Config($stateProvider, $urlRouterProvider,$httpProvider) {
+function Config($stateProvider, $urlRouterProvider,$httpProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
 			templateUrl: 'views/home.html'
 		})
 		.state('CreateTopic',{
 			url: '/createtopic',
-			templateUrl: 'views/createtopic.html'
+			templateUrl: 'views/createTopic.html'
 		}).state('EditComment',{
 			url: '/editcomment',
 			templateUrl: 'views/editComment.html'

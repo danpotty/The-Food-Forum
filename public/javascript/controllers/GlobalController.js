@@ -3,7 +3,7 @@
 	angular.module('app')
 	.controller('GlobalController', GlobalController);
 
-	function GlobalController(UserFactory,$state) {
+	function GlobalController(UserFactory, $state) {
 		var nav = this;
 		nav.user = {};
 		nav.status = UserFactory.status;

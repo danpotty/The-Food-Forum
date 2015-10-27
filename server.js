@@ -14,9 +14,8 @@ require("./models/TopicModel");
 require("./models/CommentModel");
 require("./config/passport");
 
-
-mongoose.connect(process.env.MONGO_STRING);
-
+// mongoose.connect(process.env.MONGO_STRING);
+mongoose.connect("mongodb://localhost/FoodForum");
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
@@ -33,11 +32,12 @@ app.set('view options', {
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
 var userRoutes = require('./routes/userRoutes');
 var topicRoutes = require('./routes/topicRoutes');
 // var commentRoutes = require('./routes/commentRoutes');
+
 
 //on homepage load, render the index page
 app.get('/', function(req, res) {
@@ -45,8 +45,14 @@ app.get('/', function(req, res) {
 });
 
 app.use("/api/user", userRoutes);
-app.use("/api/topic", topicRoutes);
-// app.use("/api/topic", commentRoutes);
+// Use Topic Routes
+app.use('/subforum/', topicRoutes);
+
+// Handle Errors
+app.use(function(err, req, res, next) {
+	console.log(err);
+	res.status(400).send(err);
+});
 
 var server = app.listen(port, function() {
 	var host = server.address().address;

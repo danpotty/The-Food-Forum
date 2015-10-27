@@ -1,0 +1,13 @@
+<h1>test</h1>
+<div ng-controller='EditCommentController as vm'>
+  <div ng-repeat='x in vm.comments' class="well container">
+    <form required ng-init='edittedComment = vm.getCommentCopy(x)' class='well container' ng-submit='vm.editComment(x._id, edittedComment);'>
+
+      <label>Original Post:</label>
+      <textarea class="form-control" ng-model='edittedComment.comment' required></textarea>
+
+      <button type="submit" class="btn btn-success">Submit Changes</button>
+
+    </form>
+  </div>
+</div>
