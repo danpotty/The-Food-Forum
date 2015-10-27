@@ -101,6 +101,7 @@ nav {
   position: fixed;
   bottom: 0;
   height: 7em;
+  z-index: 99999999;
 }
 nav img {
   height: 3em;
@@ -150,8 +151,8 @@ nav h3 {
   display: inline;
   position: absolute;
   left: 1em;
-  height: 5em;
-  width: 5em;
+  height: 4em;
+  width: 4em;
   margin: 0;
 }
 .section:hover {
@@ -159,6 +160,7 @@ nav h3 {
   cursor: pointer;
 }
 .sectionHead {
+  position: relative;
   background: rgba(0,0,0,.75);
   padding: 1em;
   height: 5.5em;
@@ -191,7 +193,7 @@ nav h3 {
   text-decoration: none !important;     /*      :(       */
   font-family: 'Indie Flower', cursive;
 }
-.deleteButton {
+.deleteButton, .editButton {
   width: 2em;
   height: 2em;
   position: absolute;
@@ -201,6 +203,20 @@ nav h3 {
   background-image: url("https://cdn3.iconfinder.com/data/icons/musthave/256/Remove.png");
   background-size: cover;
   z-index: 99999;
+  cursor: pointer;
+}
+.editButton {
+  right: 4em;
+  background-image: url("https://cdn4.iconfinder.com/data/icons/simplicio/128x128/document_edit.png");
+}
+.noclick {
+  cursor: default !important;
+}
+.nohighlight:hover {
+  background: rgba(0,0,0,.75);
+}
+.highlight {
+  border: solid 2px #f00;
 }
 
 /* IDs */

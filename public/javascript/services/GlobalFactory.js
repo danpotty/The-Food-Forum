@@ -6,11 +6,19 @@
 	function GlobalFactory($http, $q) {
 		var o = {};
 		o.subForum = "Home";
+		o.currentTopic = {};
 
 		// Track Sub Forum
 		o.setSubForum = function(subforum){
 			var q = $q.defer();
 			o.subForum = subforum;
+			return q.promise;
+		};
+
+		// Track Topic
+		o.setCurrentTopic = function(topic){
+			var q = $q.defer();
+			o.currentTopic = topic;
 			return q.promise;
 		};
 
@@ -41,14 +49,6 @@
 			return q.promise;
 		};
 
-		// Create Comment -POST
-		o.createComment = function(){
-			var q = $q.defer();
-			$http.post('/topic').then(function(res){
-				q.resolve(res.data);
-			});
-			return q.promise;
-		};
 
 		return o;
 	}

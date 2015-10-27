@@ -3,10 +3,11 @@ var mongoose = require('mongoose');
 var CommentPostSchema = new mongoose.Schema({
   user: String,
   date: Date,
-  content: String,
+  body: String,
   upvote: Number,
-  spam: Number
+  spam: Number,
+  topicid: String
 
 });
 
-mongoose.model('CommentPost', CommentPostSchema);
+mongoose.model('Comment', CommentPostSchema);

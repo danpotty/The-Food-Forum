@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 var userRoutes = require('./routes/userRoutes');
 var topicRoutes = require('./routes/topicRoutes');
-// var commentRoutes = require('./routes/commentRoutes');
+var commentRoutes = require('./routes/commentRoutes');
 
 
 //on homepage load, render the index page
@@ -44,9 +44,12 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
+// Use User Routes
 app.use("/api/user", userRoutes);
 // Use Topic Routes
 app.use('/subforum/', topicRoutes);
+// Use Comment Routes
+app.use('/topic/', commentRoutes);
 
 // Handle Errors
 app.use(function(err, req, res, next) {

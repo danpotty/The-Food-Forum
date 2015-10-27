@@ -3,11 +3,14 @@
 	angular.module('app')
 	.controller('AddTopicController', AddTopicController);
 
-	function AddTopicController(GlobalFactory, $state) {
+	function AddTopicController(GlobalFactory, CommentFactory, $state) {
 		var vm = this;
-
+		vm.comments = {};
 		vm.newTopic = {};
-		vm.currentTopic = {};
+		vm.Topics = {};
+		vm.editting = false;
+		vm.selectedIndex = 0;
+		vm.currentTopic = GlobalFactory.currentTopic;
 		vm.subForum = GlobalFactory.subForum;
 
 		// In Case We Don't Have SubForum Value, Force User Back Home
@@ -18,17 +21,9 @@
 		// Scroll To Top On Page Load
 		window.scrollTo(0,0);
 
-		// Placeholders
-		vm.Topics = {};
 
-		vm.comments = {
-			test1: { user: "someoneNew223",
-			userComment: "adsfasdfsa" },
-			test2: { user: "Sam3293",
-			userComment: "great job" },
-			test3: { user: "BigDawg292",
-			userComment: "blahblah" }
-		};
+		// ------------------------------------------------------------------
+		// ----------------------Topics ----------------------------------
 
 		// Get Topics By SubForum
 		vm.getTopics = function(subforum) {
@@ -40,8 +35,9 @@
 
 		// Set Current Topic Marker
 		vm.setCurrentTopic = function(topic){
-			vm.currentTopic = topic;
-			console.log(vm.currentTopic);
+			GlobalFactory.setCurrentTopic(topic).then(function(res){
+				vm.currentTopic = GlobalFactory.currentTopic;
+			});
 		};
 
 		// Create Topic
@@ -60,11 +56,49 @@
 			});
 		};
 
-		// Create Comment
-		vm.createComment = function(){
-			GlobalFactory.createComment(vm.comment).then(function(){
-				$state.go('Topic');
+		// ------------------------------------------------------------------
+		// ----------------------Comments ----------------------------------
+
+		// Get Comments By Topic
+		vm.getCommentsByTopic = function(id){
+			CommentFactory.getComments(id).then(function(res){
+				vm.comments = res;
 			});
 		};
+		vm.getCommentsByTopic(vm.currentTopic._id);
+
+		// Get Current Comment
+		vm.deleteComment = function(comment){
+			CommentFactory.deleteComment(comment._id).then(function(){
+				vm.comments.splice(vm.comments.indexOf(comment), 1);
+			});
+			$state.go('topic');
+		};
+
+		// Create Comment
+		vm.createComment = function(){
+			vm.newComment.topicid = vm.currentTopic._id;
+			CommentFactory.createComment(vm.newComment).then(function(){
+				vm.getCommentsByTopic(vm.currentTopic._id);
+				$state.go('Topic');
+				vm.newComment = {};
+			});
+		};
+
+		// Delete Comment
+		vm.deleteComment = function(comment){
+			CommentFactory.deleteComment(comment._id).then(function(){
+				vm.comments.splice(vm.comments.indexOf(comment), 1);
+				$state.go('topic');
+			});
+		};
+
+		// Save Comment Edits
+		vm.saveComment = function(comment){
+			CommentFactory.saveComment(comment).then(function(){
+				// Really Don't Need Anything Here Since We Are Updating In Real Time
+			});
+		};
+
 	}
 })();

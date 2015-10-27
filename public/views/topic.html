@@ -2,22 +2,20 @@
   <br>
   <div class="row topicContainer">
 
-    <div ng-if="vm.currentTopic.url">
+    <div ng-if="vm.currentTopic.url" class="col-sm-3">
       <img ng-src="vm.currentTopic.url" alt="Topic Picture" />
+      <br>
     </div>
 
-    <div ng-if="!vm.currentTopic.url">
-      <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" />
+    <div ng-if="!vm.currentTopic.url" class="col-sm-3">
+      <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" class="img img-responsive" style="height: 10em; width: 10em; margin: 1.5em 1.5em 3em 1.5em;"/>
     </div>
 
-    <div>
+    <div class="col-sm-9" style="text-align: left;">
       <h3 style="color:#f90;">{{ vm.currentTopic.title }}</h3>
       <h4>melonfan1974</h4>
       <br>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
-        Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-        lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-        facilisis luctus, metus</p>
+      <p>{{ vm.currentTopic.body }}</p>
       <br>
     </div>
 
@@ -29,15 +27,22 @@
       <button type="button" class="btn btn-danger" ui-sref="SubForum">Go Back</button>
     </div>
     <div ng-show="showComment">
-      <button type="button" class="btn btn-success" ng-click='showComment = false;'>Save Comment</button>
+      <button type="button" class="btn btn-success" ng-disabled="!vm.newComment.body" ng-click='vm.createComment(); showComment = false;'>Save Comment</button>
       <button type="button" class="btn btn-danger" ng-click="showComment = false;">Cancel</button>
-      <textarea placeholder="Comment" ng-model="vm.comments.userComment"></textarea>
+      <textarea placeholder="Comment" ng-model="vm.newComment.body"></textarea>
     </div>
     <hr>
-    <div class="row section" ng-repeat='z in vm.comments'>
-      <div>
-        <h3>{{z.userComment}}</h3>
-        <h5>{{z.user}}</h5>
+    <div class="row section noclick nohighlight" ng-repeat='c in vm.comments'>
+      <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;">
+        <p>{{c.body}}</p>
       </div>
+      <div ng-show="vm.editting && vm.selectedIndex === vm.comments.indexOf(c)">
+        <textarea ng-model="c.body" style="height: 5em;"></textarea>
+        <button type="button" class="btn btn-success" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.saveComment(c);" ng-disabled="!c.body">Save Changes</button>
+        <button type="button" class="btn btn-danger" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.getCommentsByTopic(vm.currentTopic._id)">Cancel</button>
+      </div>
+      <div class="editButton"  ng-show="!vm.editting" ng-click="vm.editting = true; vm.selectedIndex = vm.comments.indexOf(c);"></div>
+      <div class="deleteButton" ng-show="!vm.editting" ng-click="vm.deleteComment(c);"></div>
+      <br>
     </div>
 </div>

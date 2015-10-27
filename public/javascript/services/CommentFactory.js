@@ -1,47 +1,44 @@
 (function() {
 	'use strict';
 	angular.module('app')
-	.factory('HomeFactory', HomeFactory);
+	.factory('CommentFactory', CommentFactory);
 
-	function HomeFactory($http, $q) {
+	function CommentFactory ($http, $q) {
 		var o = {};
 
-    o.getAllComments = function() {
+
+		// Get Comments By Topic
+    o.getComments = function(id) {
 			var q = $q.defer();
-			$http.get('/comments').then(function(res) {
+			$http.get('/topic/' + id).then(function(res) {
 				q.resolve(res.data);
 			});
 			return q.promise;
 		};
 
-    o.getCommentById = function(id){
-      var q = $q.defer();
-      $http.get('/comments/' + id).then(function(res){
-        q.resolve(res.data);
-      });
-      return q.promise;
-    };
-
-		o.createComment = function(comment, topicId){
+		// Add Comment
+		o.createComment = function(comment){
 			var q = $q.defer();
-			$http.post('/comments/' + topicId + '/comment', comment).then(function(res){
-				q.resolve(res.data);
+			$http.post('/topic/', comment).then(function(res){
+				q.resolve();
 			});
 			return q.promise;
 		};
 
+
+		// Delete Comment
     o.deleteComment = function(id){
       var q = $q.defer();
-      $http.delete('/comments' + id).then(function(res){
+      $http.delete('/topic/' + id).then(function(res){
         q.resolve(res.data);
       });
       return q.promise;
     };
 
-    o.editComment = function(edittedCommentObj){
+		// Save Comment Edits
+    o.saveComment = function(comment){
       var q = $q.defer();
-      console.log(edittedCommentObj);
-      $http.put('/comments', edittedCommentObj).then(function(res){
+      $http.put('/topic/', comment).then(function(res){
         q.resolve(res.data);
       });
       return q.promise;
