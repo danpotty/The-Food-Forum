@@ -10,7 +10,7 @@
       <img src='http://www.foodnavigator-usa.com/var/plain_site/storage/images/publications/food-beverage-nutrition/foodnavigator-usa.com/markets/us-organic-food-market-to-grow-14-from-2013-18/8668340-1-eng-GB/US-organic-food-market-to-grow-14-from-2013-18.jpg' class="img-responsive"/>
       <button type="button" ng-show='!vm.updatePic' class="btn btn-success" ng-click="vm.updatePic = true">Update Profile Picture</button>
       <form ng-show="vm.updatePic" ng-submit='vm.updateProfilePic()'>
-        <input ng-model="vm.urlObj" placeholder='Paste url here'>{{nav.status.profilePic}}</input>
+        <input ng-model="vm.urlObj" placeholder='Paste url here'>
         <button type="submit" class="btn btn-info" ng-click='vm.updatePic = false'>Submit Changes</button>
       </form>
     </div>
