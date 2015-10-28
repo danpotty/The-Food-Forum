@@ -23,6 +23,7 @@
          </md-input-container>
          <div layout="column">
             <div>
+               <div ng-show="!(nav.user.password === nav.user.confirmPassword)">Your passwords must match.</div>
             <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.email || !nav.user.password || !(nav.user.password === nav.user.confirmPassword)">Register</md-button>
          </div>
          <div>
