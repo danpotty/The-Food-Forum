@@ -12,7 +12,9 @@
 			$http.post("/api/user/login", user).then(function(res){
 				setToken(res.data);
 				setUser();
-				q.resolve(res.data);
+				q.resolve(res);
+			}, function(res){
+				q.reject("Incorrect username and password combination.");
 			});
 			return q.promise;
 		};
