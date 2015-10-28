@@ -26,6 +26,8 @@
 				setUser();
 				o.status.profilePic = "https://pbs.twimg.com/profile_images/571009371593666560/H8BnOWbx.jpeg";
 				q.resolve(res.data);
+			}, function(res){
+				q.reject("Username or password has already been used. Try a new one.");
 			});
 			return q.promise;
 		};

@@ -6,17 +6,18 @@
 	function GlobalController(UserFactory, $state) {
 		var nav = this;
 		nav.user = {};
-		nav.err = false;
+		nav.errLog = false;
+		nav.errReg = false;
 		nav.status = UserFactory.status;
 
 		nav.loginUser = function(){
 			UserFactory.loginUser(nav.user).then(function(res){
 				nav.user = {};
-				nav.err = "";
+				nav.errLog = "";
 				nav.overlayLogin();
 			}, function(err){
 				console.log(err);
-				nav.err = err;
+				nav.errLog = err;
 				// nav.err = true;
 			});
 		};
@@ -24,9 +25,13 @@
 		nav.registerUser = function(){
 			UserFactory.registerUser(nav.user).then(function(){
 				nav.user = {};
+				nav.errReg = "";
 				nav.overlayRegister();
-			});
-		};
+			}, function(err){
+				console.log(err);
+				nav.errReg = err;
+		});
+	};
 
 		nav.logoutUser = function(){
 			UserFactory.logout();
