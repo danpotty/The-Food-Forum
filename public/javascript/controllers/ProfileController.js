@@ -7,7 +7,7 @@
 		var vm = this;
 		vm.editing = false;
 		vm.updatePic = false;
-		vm.userInfo;
+		vm.userInfo = UserFactory.status;
 
 		vm.getUser = function(){
 			UserFactory.getUserInfo().then(function(res){

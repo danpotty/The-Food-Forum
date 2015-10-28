@@ -5,7 +5,7 @@
    </div>
   <div layout='row' flex>
     <div flex="35">
-      <img src='{{vm.userInfo.profilePic}}' class="img-responsive"/>
+      <img src='{{vm.userInfo.profilePic || "https://pbs.twimg.com/profile_images/571009371593666560/H8BnOWbx.jpeg"}}' class="img-responsive"/>
       <button type="button" ng-show='!vm.updatePic' class="btn btn-success" ng-click="vm.updatePic = true">Update Profile Picture</button>
       <form ng-show="vm.updatePic" ng-submit='vm.updateProfilePic()'>
         <input ng-model="vm.userInfo.profilePic" placeholder='Paste url here'>

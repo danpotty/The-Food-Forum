@@ -36,19 +36,12 @@ router.post('/getinfo', function(req, res, next){
   });
 });
 
-
-
-// router.put('/profile', function(req, res, next){
-//   User.update({_id: <id>},{bio: <value>, profilePic: <value>})
-// });
-
 router.post('/bio', function(req, res, next){
   User.update({_id: req.body.userId}, {bio: req.body.newBio}).exec(function(err, result){
     if(err) return next(err);
     res.send(result);
   });
 });
-
 
 router.post('/profilePic', function(req, res, next){
   console.log(req.body);

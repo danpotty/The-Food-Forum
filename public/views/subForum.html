@@ -2,7 +2,7 @@
   <h1 style="color: #333;">{{ vm.subForum }}</h1>
   <hr>
     <div>
-      <button type="button" class="btn btn-info" ui-sref="CreateTopic">Create New Topic</button>
+      <button type="button" ng-show="nav.status.username" class="btn btn-info" ui-sref="CreateTopic">Create New Topic</button>
       <button type="button" class="btn btn-danger" ui-sref="Home">Go Back</button>
     </div>
     <hr>

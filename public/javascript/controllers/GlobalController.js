@@ -10,6 +10,10 @@
 		nav.errReg = false;
 		nav.status = UserFactory.status;
 
+		// Scroll To Top On Page Load
+		window.scrollTo(0,0);
+
+
 		nav.loginUser = function(){
 			UserFactory.loginUser(nav.user).then(function(res){
 				nav.user = {};
@@ -23,6 +27,7 @@
 		};
 
 		nav.registerUser = function(){
+			nav.user.profilePic = "https://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png";
 			UserFactory.registerUser(nav.user).then(function(){
 				nav.user = {};
 				nav.errReg = "";
