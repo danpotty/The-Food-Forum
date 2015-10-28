@@ -10,7 +10,7 @@
         <br>
       </div>
       <div ng-if="!vm.currentTopic.url" class="col-sm-3">
-        <img src="https://exposingtheinvisible.org/media/missing.png" alt="No Picture" class="img-responsive" style="width: 75%; margin: 0 0 0 1.5em;"/>
+        <img src="https://exposingtheinvisible.org/media/missing.png" alt="No Picture" class="img-responsive" style="position: relative; display: block; width: 75%; height: auto; margin: 1em 0; border: solid 2px #fff;" />
       </div>
 
       <div class="col-sm-9" style="text-align: left;">
@@ -71,8 +71,8 @@
         <div class="editButton" ng-if="nav.status.username === c.author" ng-show="!vm.editting" ng-click="vm.editting = true; vm.selectedIndex = vm.comments.indexOf(c);"></div>
         <div class="deleteButton" ng-if="nav.status.username === c.author" ng-show="!vm.editting" ng-click="vm.deleteComment(c);"></div>
 
-        <div class="upvote" ng-if="nav.status.username != c.author && vm.display(c.voters)" ng-show="!vm.editting" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.Vote(c, 1);"></div>
-        <div class="downvote" ng-if="nav.status.username != c.author && vm.display(c.voters)" ng-show="!vm.editting" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.Vote(c, 0);"></div>
+        <div class="upvote" ng-if="nav.status.username != c.author && vm.display(c.voters) && nav.status.username" ng-show="!vm.editting" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.Vote(c, 1);"></div>
+        <div class="downvote" ng-if="nav.status.username != c.author && vm.display(c.voters) && nav.status.username" ng-show="!vm.editting" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.Vote(c, 0);"></div>
       </div>
 
     </div>
