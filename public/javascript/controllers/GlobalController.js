@@ -11,7 +11,8 @@
 
 		nav.loginUser = function(){
 			UserFactory.loginUser(nav.user).then(function(res){
-				console.log(res);
+				nav.user = {};
+				nav.overlay();
 				$state.go("Home");
 			}, function(err){
 				console.log(err);
@@ -29,6 +30,11 @@
 		nav.logoutUser = function(){
 			UserFactory.logout();
 			$state.go("Home");
+		};
+
+		nav.overlay = function() {
+			nav.el = document.getElementById("overlay-login");
+			nav.el.style.visibility = (nav.el.style.visibility == "visible") ? "hidden" : "visible";
 		};
 
 	}
