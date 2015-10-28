@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
 var CommentPostSchema = new mongoose.Schema({
-  user: String,
+  author: String,
   date: Date,
   body: String,
   upvote: Number,
   spam: Number,
-  topicid: String
-
+  topicid: String,
+  voters: Array
 });
 
 mongoose.model('Comment', CommentPostSchema);

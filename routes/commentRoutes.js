@@ -22,6 +22,7 @@ router.post("/", function(req, res, next) {
   });
 });
 
+// Delete Comments
  router.delete('/:id', function(req, res, next){
    Comment.remove({_id: req.params.id}, function(err, result){
      if(err) return next(err);
@@ -29,6 +30,7 @@ router.post("/", function(req, res, next) {
    });
  });
 
+// Edit Comments
  router.put('/', function(req, res, next){
    Comment.update({_id: req.body._id}, req.body, function(err, result){
      if(err) return next(err);
@@ -37,6 +39,14 @@ router.post("/", function(req, res, next) {
    });
  });
 
-
+ // Up Vote / Down Vote
+  router.put('/:id', function(req, res, next){
+   console.log(req.body);
+   Comment.update({_id: req.body._id}, req.body, function(err, result){
+     if(err) return next(err);
+     if(!result) return next({err: 'The comment was not found...'});
+     res.send(result);
+   });
+  });
 
 module.exports = router;

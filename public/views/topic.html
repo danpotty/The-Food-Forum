@@ -1,24 +1,28 @@
-<div ng-controller='AddTopicController as vm' class="container">
+<div ng-controller='AddTopicController as vm' class="container" style="margin-bottom: 10em;">
   <br>
-  <div class="row topicContainer">
-
-    <div ng-if="vm.currentTopic.url" class="col-sm-3">
-      <img ng-src="vm.currentTopic.url" alt="Topic Picture" />
-      <br>
+  <div class="forumContainer">
+    <div class="sectionHead">
+      <h2>Topic</h2>
     </div>
 
-    <div ng-if="!vm.currentTopic.url" class="col-sm-3">
-      <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" class="img img-responsive" style="height: 10em; width: 10em; margin: 1.5em 1.5em 3em 1.5em;"/>
-    </div>
+    <div class="row section">
+      <div ng-if="vm.currentTopic.url" class="col-sm-3">
+        <img ng-src="{{vm.currentTopic.url}}" alt="Topic Picture" class="img img-responsive" style="width: 75%; height: auto; border: solid 2px #fff;" />
+        <br>
+      </div>
+      <div ng-if="!vm.currentTopic.url" class="col-sm-3">
+        <img src="https://exposingtheinvisible.org/media/missing.png" alt="No Picture" class="img-responsive" style="width: 75%; margin: 0 0 0 1.5em;"/>
+      </div>
 
-    <div class="col-sm-9" style="text-align: left;">
-      <h3 style="color:#f90;">{{ vm.currentTopic.title }}</h3>
-      <h4>melonfan1974</h4>
-      <br>
-      <p>{{ vm.currentTopic.body }}</p>
-      <br>
+      <div class="col-sm-9" style="text-align: left;">
+        <h3 style="color:#f90; margin-bottom: 0;">{{ vm.currentTopic.title }}</h3>
+        <h5>{{ vm.currentTopic.author}}</h5>
+        <h5>{{ vm.currentTopic.createdOn | date:'MM/dd/yyyy HH:mma' }}</h5>
+        <br>
+        <p>{{ vm.currentTopic.body }}</p>
+        <br>
+      </div>
     </div>
-
   </div>
 
     <hr>
@@ -31,18 +35,46 @@
       <button type="button" class="btn btn-danger" ng-click="showComment = false;">Cancel</button>
       <textarea placeholder="Comment" ng-model="vm.newComment.body"></textarea>
     </div>
+
     <hr>
-    <div class="row section noclick nohighlight" ng-repeat='c in vm.comments'>
-      <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;">
-        <p>{{c.body}}</p>
+
+    <div class="forumContainer">
+
+      <div class="sectionHead">
+        <h2>Comments</h2>
       </div>
-      <div ng-show="vm.editting && vm.selectedIndex === vm.comments.indexOf(c)">
-        <textarea ng-model="c.body" style="height: 5em;"></textarea>
-        <button type="button" class="btn btn-success" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.saveComment(c);" ng-disabled="!c.body">Save Changes</button>
-        <button type="button" class="btn btn-danger" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.getCommentsByTopic(vm.currentTopic._id)">Cancel</button>
+
+      <div class="row section noclick nohighlight" ng-repeat='c in vm.comments'>
+
+        <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;" style="position: relative; text-align: center;">
+          <div class="col-sm-2">
+            <div ng-if="nav.status.profilePic">
+              <img ng-src="nav.status.profilePic" alt="User Picture" style="height: 4em; width: 4em; margin: 1em 0 1em 4em;"/>
+            </div>
+            <div ng-if="!nav.status.profilePic">
+              <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" style="display: block; height: 4em; width: 4em; margin: 1em 0 1em 4em;" />
+            </div>
+            <h5 style="display: block; padding-top: 6em;">{{c.author}}</h5>
+            <p style="display: block; padding-top: .5em; font-size: .9em;">Posted: {{c.date | date:'MM/dd/yyyy HH:mma'}}</p>
+            <p style="display: block; padding-top: .5em; font-size: .9em;">Votes: {{c.upvote}}</p>
+          </div>
+          <div class="col-sm-10" style="height: 14em; border-left: solid 1px #888; text-align: left;">
+            <p>{{c.body}}</p>
+          </div>
+        </div>
+
+        <div ng-show="vm.editting && vm.selectedIndex === vm.comments.indexOf(c)">
+          <textarea ng-model="c.body" style="height: 5em;"></textarea>
+          <button type="button" class="btn btn-success" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.saveComment(c);" ng-disabled="!c.body">Save Changes</button>
+          <button type="button" class="btn btn-danger" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.getCommentsByTopic(vm.currentTopic._id)">Cancel</button>
+        </div>
+
+        <div class="editButton" ng-if="nav.status.username === c.author" ng-show="!vm.editting" ng-click="vm.editting = true; vm.selectedIndex = vm.comments.indexOf(c);"></div>
+        <div class="deleteButton" ng-if="nav.status.username === c.author" ng-show="!vm.editting" ng-click="vm.deleteComment(c);"></div>
+
+        <div class="upvote" ng-if="nav.status.username != c.author && vm.display(c.voters)" ng-show="!vm.editting" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.Vote(c, 1);"></div>
+        <div class="downvote" ng-if="nav.status.username != c.author && vm.display(c.voters)" ng-show="!vm.editting" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.Vote(c, 0);"></div>
       </div>
-      <div class="editButton"  ng-show="!vm.editting" ng-click="vm.editting = true; vm.selectedIndex = vm.comments.indexOf(c);"></div>
-      <div class="deleteButton" ng-show="!vm.editting" ng-click="vm.deleteComment(c);"></div>
-      <br>
+
     </div>
 </div>

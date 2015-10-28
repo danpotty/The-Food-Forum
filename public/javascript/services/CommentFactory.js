@@ -3,7 +3,7 @@
 	angular.module('app')
 	.factory('CommentFactory', CommentFactory);
 
-	function CommentFactory ($http, $q) {
+	function CommentFactory ($http, $q, UserFactory) {
 		var o = {};
 
 
@@ -25,7 +25,6 @@
 			return q.promise;
 		};
 
-
 		// Delete Comment
     o.deleteComment = function(id){
       var q = $q.defer();
@@ -43,6 +42,16 @@
       });
       return q.promise;
     };
+
+		// Vote
+		o.Vote = function(comment, vote){
+			var q = $q.defer();
+			$http.put('/topic/' + comment._id, comment).then(function(res){
+				q.resolve(res.data);
+			});
+			return q.promise;
+		};
+
 
 		return o;
 	}

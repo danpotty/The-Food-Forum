@@ -29,10 +29,25 @@ router.get("/:author", function(req, res, next) {
   });
 });
 
-router.put('/profile', function(req, res, next){
-  // User.update({_id: <id>},{bio: <value>, profilePic: <value>})
+
+
+// router.put('/profile', function(req, res, next){
+//   User.update({_id: <id>},{bio: <value>, profilePic: <value>})
+// });
+
+router.post('/', function(req, res, next){
+  User.update({_id: req.body.userId}, {bio: req.body.newBio}).exec(function(err, result){
+    if(err) return next(err);
+    res.send(result);
+  });
 });
 
 
+router.post('/', function(req, res, next){
+  User.update({_id: req.body.userId}, {profilePic: req.body.newPic}).exec(function(err, result){
+    if(err) return next(err);
+    res.send(result);
+  });
+});
 
 module.exports = router;
