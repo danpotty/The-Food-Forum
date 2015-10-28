@@ -28,6 +28,7 @@
 
 		nav.registerUser = function(){
 			nav.user.profilePic = "https://upload.wikimedia.org/wikipedia/en/9/99/MarioSMBW.png";
+			nav.user.bio = "This is a default biography for you created by 'The Food Forum'. If you would like to change this, please click the edit button above.";
 			UserFactory.registerUser(nav.user).then(function(){
 				nav.user = {};
 				nav.errReg = "";
