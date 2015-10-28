@@ -12,7 +12,8 @@
 		nav.loginUser = function(){
 			UserFactory.loginUser(nav.user).then(function(res){
 				nav.user = {};
-				nav.overlay();
+				nav.err = "";
+				nav.overlayLogin();
 			}, function(err){
 				console.log(err);
 				nav.err = err;
@@ -23,7 +24,7 @@
 		nav.registerUser = function(){
 			UserFactory.registerUser(nav.user).then(function(){
 				nav.user = {};
-				nav.overlay();
+				nav.overlayRegister();
 			});
 		};
 
@@ -32,10 +33,14 @@
 			$state.go("Home");
 		};
 
-		nav.overlay = function() {
+		nav.overlayLogin = function() {
 			nav.el = document.getElementById("overlay-login");
 			nav.el.style.display = (nav.el.style.display == "block") ? "none" : "block";
 		};
 
+		nav.overlayRegister = function() {
+			nav.el = document.getElementById("overlay-register");
+			nav.el.style.display = (nav.el.style.display == "block") ? "none" : "block";
+		};
 	}
 })();
