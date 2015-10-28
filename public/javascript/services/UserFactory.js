@@ -24,7 +24,6 @@
 			$http.post("/api/user/register", user).then(function(res){
 				setToken(res.data); // Token is not yet parsed into JSON obj
 				setUser();
-				o.status.profilePic = "https://pbs.twimg.com/profile_images/571009371593666560/H8BnOWbx.jpeg";
 				q.resolve(res.data);
 			});
 			return q.promise;
