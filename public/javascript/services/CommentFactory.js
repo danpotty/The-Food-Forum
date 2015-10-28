@@ -3,7 +3,7 @@
 	angular.module('app')
 	.factory('CommentFactory', CommentFactory);
 
-	function CommentFactory ($http, $q) {
+	function CommentFactory ($http, $q, UserFactory) {
 		var o = {};
 
 
@@ -43,23 +43,15 @@
       return q.promise;
     };
 
-		// Up Vote
-		o.upVote = function(id, voteCount){
+		// Vote
+		o.Vote = function(comment, vote){
 			var q = $q.defer();
-			$http.put('/topic/' + id, voteCount).then(function(res){
+			$http.put('/topic/' + comment._id, comment).then(function(res){
 				q.resolve(res.data);
 			});
 			return q.promise;
 		};
 
-		// Down Vote
-		o.upVote = function(comment){
-			var q = $q.defer();
-			$http.put('/topic/vote', comment).then(function(res){
-				q.resolve(res.data);
-			});
-			return q.promise;
-		};
 
 		return o;
 	}

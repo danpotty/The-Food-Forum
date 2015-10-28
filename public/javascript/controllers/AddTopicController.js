@@ -76,7 +76,7 @@
 			CommentFactory.deleteComment(comment._id).then(function(){
 				vm.comments.splice(vm.comments.indexOf(comment), 1);
 			});
-			$state.go('topic');
+			$state.go('Topic');
 		};
 
 		// Create Comment
@@ -84,6 +84,8 @@
 			vm.newComment.topicid = vm.currentTopic._id;
 			vm.newComment.author = UserFactory.status.username;
 			vm.newComment.upvote = 0;
+			vm.newComment.date = new Date();
+			vm.newComment.votedOn = [];
 			CommentFactory.createComment(vm.newComment).then(function(){
 				vm.getCommentsByTopic(vm.currentTopic._id);
 				$state.go('Topic');
@@ -95,7 +97,7 @@
 		vm.deleteComment = function(comment){
 			CommentFactory.deleteComment(comment._id).then(function(){
 				vm.comments.splice(vm.comments.indexOf(comment), 1);
-				$state.go('topic');
+				$state.go('Topic');
 			});
 		};
 
@@ -106,23 +108,49 @@
 			});
 		};
 
+
 		// ------------------------------------------------------------------
 		// ----------------------Voting ----------------------------------
 
 		// Up Vote
-		vm.upVote = function(id){
-			CommentFactory.upVote(id).then(function(){
-				// Really Don't Need Anything Here Since We Are Updating In Real Time
+		vm.Vote = function(comment, vote){
+			// Convert Vote To Number
+			var Vote = Number(vote);
+			// Second Check If User Has Voted Vs Our Array Of Voters
+			for (var i = 0; i < comment.voters.length; i++) {
+				// If Already Voted, Return Out
+				if (comment.voters[i] === UserFactory.status.username) {
+					return;
+				}
+			}
+			// Push Vote Into Array
+			comment.voters.push(UserFactory.status.username);
+			if (Vote === 1) {
+				comment.upvote += 1;
+			} else if (Vote === 0) {
+				comment.upvote -= 1;
+				// If Comment Has < -5 Votes, Delete Comment
+				if(comment.upvote == -2) {
+					vm.deleteComment(comment);
+					return;
+				}
+			} else {
+				alert("error");
+			}
+			CommentFactory.Vote(comment).then(function(){
+				vm.getCommentsByTopic(vm.currentTopic._id);
 			});
 		};
 
-		// Down Vote
-		vm.downVote = function(id){
-			CommentFactory.downVote(id).then(function(){
-				// Really Don't Need Anything Here Since We Are Updating In Real Time
-			});
+		// Function To Determine Whether Or Not User Is On Comments "voters" Property
+		vm.display = function(voters) {
+			var x = voters.indexOf(UserFactory.status.username);
+			if (x == -1) {
+				return true;
+			} else {
+				return false;
+			}
 		};
-
 
 	}
 })();

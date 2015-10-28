@@ -6,8 +6,8 @@ var CommentPostSchema = new mongoose.Schema({
   body: String,
   upvote: Number,
   spam: Number,
-  topicid: String
-
+  topicid: String,
+  voters: Array
 });
 
 mongoose.model('Comment', CommentPostSchema);
