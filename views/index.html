@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html ng-app="app">
 
 <head>
@@ -98,3 +99,97 @@
 </body>
 
 </html>
+=======
+<html ng-app="app">
+<head>
+	<title>The Food Forum</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
+	<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/site.css">
+</head>
+<body ng-controller="GlobalController as nav">
+<ui-view></ui-view>
+	<nav>
+		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlay()' class="btn btn-success left">Login</button>
+		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-success left">{{nav.status.username}}</button>
+		<a ui-sref="Home" class="navLink">
+		<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
+		<h3 class="navLink">The Food Forum</h3>
+		</a>
+		<button ng-show="!nav.status.username" type="button" ui-sref="Register" class="btn btn-info right">Register</button>
+		<button ng-show="nav.status.username" type="button" ng-click="nav.logoutUser()" class="btn btn-danger right">Logout</button>
+	</nav>
+
+	<div id="overlay-login">
+  	       <md-content layout-padding>
+				 <h1>
+  	             Welcome back!
+  	          </h1>
+  	          <form name="loginForm" ng-submit="nav.loginUser()">
+  	             <md-input-container>
+  	                <label>User Name</label>
+  	                <input required name="username" ng-model="nav.user.username">
+  	             </md-input-container>
+  	             <md-input-container>
+  	                <label>Password</label>
+  	                <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
+  	             </md-input-container>
+					 	<span ng-if="nav.err">{{nav.err}}</span><br/>
+  	                <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
+  	                <hr>
+  	                <h6>Haven't joined our community yet?</h6>
+  	                <md-button type="button" ui-sref="Register">Sign Up</md-button>
+  	          </form>
+  	       </md-content>
+	</div>
+<!--
+	<div id="overlay-register">
+			 <md-content layout-padding>
+				 <span>[<a href='#' onclick='overlay()'>close</a>]</span>
+				 <h1>
+					 Welcome back!
+				 </h1>
+				 <form name="loginForm" ng-submit="nav.loginUser()">
+					 <md-input-container>
+						 <label>User Name</label>
+						 <input required name="username" ng-model="nav.user.username">
+					 </md-input-container>
+					 <md-input-container>
+						 <label>Password</label>
+						 <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
+					 </md-input-container>
+						 <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
+						 <hr>
+						 <h6>Haven't joined our community yet?</h6>
+						 <md-button type="button" ui-sref="Register">Sign Up</md-button>
+				 </form>
+			 </md-content>
+	</div> -->
+
+	<!-- Ext Libs -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.js"></script>
+	<!-- Global Src -->
+	<script src="/javascript/app.js"></script>
+	<!-- <script src="/javascript/overlay.js"></script> -->
+	<!-- Factories -->
+	<script src="/javascript/services/GlobalFactory.js"></script>
+	<script src="/javascript/services/CommentFactory.js"></script>
+	<script src="/javascript/services/UserFactory.js"></script>
+	<script src="/javascript/services/AuthInterceptor.js"></script>
+
+	<!-- Controllers -->
+	<script src="/javascript/controllers/AddTopicController.js"></script>
+	<script src="/javascript/controllers/GlobalController.js"></script>
+	<script src="/javascript/controllers/HomeController.js"></script>
+	<script src="/javascript/controllers/ProfileController.js"></script>
+
+</body>
+</html>
+>>>>>>> a2c9de565942d88abaebfd1b117861f39c3785d9
