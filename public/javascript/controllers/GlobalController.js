@@ -11,8 +11,8 @@
 
 		nav.loginUser = function(){
 			UserFactory.loginUser(nav.user).then(function(res){
-				console.log(res);
-				$state.go("Home");
+				nav.user = {};
+				nav.overlay();
 			}, function(err){
 				console.log(err);
 				nav.err = err;
@@ -22,13 +22,19 @@
 
 		nav.registerUser = function(){
 			UserFactory.registerUser(nav.user).then(function(){
-				$state.go("Home");
+				nav.user = {};
+				nav.overlay();
 			});
 		};
 
 		nav.logoutUser = function(){
 			UserFactory.logout();
 			$state.go("Home");
+		};
+
+		nav.overlay = function() {
+			nav.el = document.getElementById("overlay-login");
+			nav.el.style.display = (nav.el.style.display == "block") ? "none" : "block";
 		};
 
 	}

@@ -15,7 +15,7 @@
 
 	<ui-view></ui-view>
 	<nav>
-		<button ng-show="!nav.status.username" type="button" onclick='overlay()' class="btn btn-success left">Login</button>
+		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlay()' class="btn btn-success left">Login</button>
 		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-success left">{{nav.status.username}}</button>
 		<a ui-sref="Home" class="navLink">
 			<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
@@ -39,13 +39,13 @@
 						<label>Password</label>
 						<input required type="password"   style="width: 30%;" name="userPassword" ng-model="nav.user.password" minlength="5" />
 					</md-input-container>
-					<span ng-if="nav.err">{{nav.err}}</span>
+					<span ng-if="nav.err">{{nav.err}}<br/></span>
 					<md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
 					<hr>
 					<h6>Haven't joined our community yet?</h6>
 					<md-button type="button" ui-sref="Register">Sign Up</md-button>
 					<br>
-					<md-button type="button" onclick="overlay()" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
+					<md-button type="button" ng-click="nav.overlay()" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
 				</form>
 			</div>
 		</md-content>
