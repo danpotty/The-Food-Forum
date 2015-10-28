@@ -8,7 +8,7 @@
 		vm.editting = false;
 		vm.selectedIndex = 0;
 
-    vm.editProfile = function(){
+    vm.updateProfile = function(){
       UserFactory.editProfile();
     };
 

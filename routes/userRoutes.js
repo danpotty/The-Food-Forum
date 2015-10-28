@@ -29,9 +29,9 @@ router.get("/:author", function(req, res, next) {
   });
 });
 
-router.put('/profile', function(req, res, next){
-  User.update({_id: <id>},{bio: <value>, profilePic: <value>})
-});
+// router.put('/profile', function(req, res, next){
+//   User.update({_id: <id>},{bio: <value>, profilePic: <value>})
+// });
 
 
 

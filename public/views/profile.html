@@ -10,8 +10,11 @@
     </div>
     <div flex="65" layout-padding="10">
       <!-- <p>{{nav.status.bio}} <a ng-href="INSERTFUNCTIONHERE()">Edit Bio</a></p> -->
-      <p class="text-left">Cupcake ipsum dolor sit amet. Tiramisu cupcake biscuit icing wafer marzipan. Jelly beans biscuit dragée jelly-o. Sweet muffin gummies jelly beans chupa chups tiramisu. Sesame snaps soufflé cake sugar plum ice cream bear claw powder. Wafer pie gummies. Dessert lollipop oat cake bear claw ice cream candy. Tiramisu muffin cookie. Jelly bear claw toffee dragée tiramisu. <a ng-href="INSERTFUNCTIONHERE()">Edit Bio</a></p>
+      <p ng-model='nav.status.bio' class="text-left">Cupcake ipsum dolor sit amet. Tiramisu cupcake biscuit icing wafer marzipan. Jelly beans biscuit dragée jelly-o. Sweet muffin gummies jelly beans chupa chups tiramisu. Sesame snaps soufflé cake sugar plum ice cream bear claw powder. Wafer pie gummies. Dessert lollipop oat cake bear claw ice cream candy. Tiramisu muffin cookie. Jelly bear claw toffee dragée tiramisu. <a ng-show='!vm.editing' ng-click='vm.editing = true'>Edit Bio</a></p>
       <span>Date joined: {{nav.status.dateJoined | date : shortDate}} 04/14/2015 | Last login: {{nav.status.lastLogin | date : shortDate}} 10/27/2015</span>
+      <form ng-show='vm.editing' ng-submit='updateProfile()'>
+        <textarea>{{nav.status.bio}}</textarea>
+      </form>
     </div>
   </div>
   <div class="text-left">
