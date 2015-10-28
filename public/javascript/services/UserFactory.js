@@ -43,6 +43,7 @@ function setUser(){
 	var user = JSON.parse(urlBase64Decode(getToken().split(".")[1]));
 	o.status.username = user.username;
 	o.status._id = user._id;
+	o.status.bio = user.bio;
 }
 
 function removeUser(){
@@ -79,8 +80,10 @@ var token = getToken();
 o.status = {};
 if(token){
 	var user = o.getUser();
+	console.log(user);
 	o.status.username = user.username;
 	o.status._id = user._id;
+	o.status.bio = user.bio;
 }
 
 	if(getToken()) setUser();
@@ -115,6 +118,15 @@ if(token){
 		$http.post('/api/user/profilePic', picObj).then(function(res){
 			o.status.profilePic = urlObject;
 			q.resolve(res.data);
+		});
+		return q.promise;
+	};
+
+	o.getUserInfo = function(){
+		var q = $q.defer();
+		$http.post('/api/user/getinfo', {userId: o.status._id}).then(function(res){
+			q.resolve(res.data);
+			console.log(res.data);
 		});
 		return q.promise;
 	};

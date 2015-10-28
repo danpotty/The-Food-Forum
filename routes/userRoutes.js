@@ -29,6 +29,13 @@ router.get("/:author", function(req, res, next) {
   });
 });
 
+router.post('/getinfo', function(req, res, next){
+  User.findOne({_id: req.body.userId}, "bio email username profilePic").exec(function(err, result){
+    if(err) return next(err);
+    res.send(result);
+  });
+});
+
 
 
 // router.put('/profile', function(req, res, next){
@@ -44,6 +51,7 @@ router.post('/bio', function(req, res, next){
 
 
 router.post('/profilePic', function(req, res, next){
+  console.log(req.body);
   User.update({_id: req.body.userId}, {profilePic: req.body.newPic}).exec(function(err, result){
     if(err) return next(err);
     res.send(result);
