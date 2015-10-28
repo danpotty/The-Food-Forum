@@ -5,7 +5,7 @@ var TopicPostSchema = new mongoose.Schema({
   author: String,
   subForum: String,
   body: String,
-  date: Date,
+  createdOn: Date,
   url: String
 });
 

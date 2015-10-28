@@ -13,9 +13,10 @@
 
     <div class="col-sm-9" style="text-align: left;">
       <h3 style="color:#f90;">{{ vm.currentTopic.title }}</h3>
-      <h4>melonfan1974</h4>
+      <h5>{{ vm.currentTopic.author}}</h5>
       <br>
       <p>{{ vm.currentTopic.body }}</p>
+      <p>{{ vm.currentTopic.createdOn }}</p>
       <br>
     </div>
 
@@ -33,16 +34,33 @@
     </div>
     <hr>
     <div class="row section noclick nohighlight" ng-repeat='c in vm.comments'>
-      <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;">
-        <p>{{c.body}}</p>
+
+      <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;" style="position: relative; text-align: center;">
+        <div class="col-sm-2">
+          <div ng-if="nav.status.profilePic">
+            <img ng-src="nav.status.profilePic" alt="User Picture" style="height: 4em; width: 4em; margin: 1em 0 1em 4em;"/>
+          </div>
+          <div ng-if="!nav.status.profilePic">
+            <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" style="display: block; height: 4em; width: 4em; margin: 1em 0 1em 4em;" />
+          </div>
+          <p style="display: block; padding-top: 6em;">{{c.author}}</p>
+          <p style="display: block; padding-top: 1em;">Votes: {{c.upvote}}</p>
+        </div>
+        <div class="col-sm-10" style="height: 10em; border-left: solid 1px #888; text-align: left;">
+          <p>{{c.body}}</p>
+        </div>
+
       </div>
       <div ng-show="vm.editting && vm.selectedIndex === vm.comments.indexOf(c)">
         <textarea ng-model="c.body" style="height: 5em;"></textarea>
         <button type="button" class="btn btn-success" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.saveComment(c);" ng-disabled="!c.body">Save Changes</button>
         <button type="button" class="btn btn-danger" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.getCommentsByTopic(vm.currentTopic._id)">Cancel</button>
       </div>
-      <div class="editButton"  ng-show="!vm.editting" ng-click="vm.editting = true; vm.selectedIndex = vm.comments.indexOf(c);"></div>
-      <div class="deleteButton" ng-show="!vm.editting" ng-click="vm.deleteComment(c);"></div>
+      <div class="editButton" ng-if="nav.status.username === c.author" ng-show="!vm.editting" ng-click="vm.editting = true; vm.selectedIndex = vm.comments.indexOf(c);"></div>
+      <div class="deleteButton" ng-if="nav.status.username === c.author" ng-show="!vm.editting" ng-click="vm.deleteComment(c);"></div>
+
+      <div class="upvote" ng-if="nav.status.username != c.author" ng-show="!vm.editting && vm.comments.indexOf(c) != vm.selectedIndex;" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.voted = true;"></div>
+      <div class="downvote" ng-if="nav.status.username != c.author" ng-show="!vm.editting && vm.comments.indexOf(c) != vm.selectedIndex;" ng-click="vm.selectedIndex = vm.comments.indexOf(c); vm.voted = true;"></div>
       <br>
     </div>
 </div>

@@ -25,7 +25,6 @@
 			return q.promise;
 		};
 
-
 		// Delete Comment
     o.deleteComment = function(id){
       var q = $q.defer();
@@ -43,6 +42,24 @@
       });
       return q.promise;
     };
+
+		// Up Vote
+		o.upVote = function(id, voteCount){
+			var q = $q.defer();
+			$http.put('/topic/' + id, voteCount).then(function(res){
+				q.resolve(res.data);
+			});
+			return q.promise;
+		};
+
+		// Down Vote
+		o.upVote = function(comment){
+			var q = $q.defer();
+			$http.put('/topic/vote', comment).then(function(res){
+				q.resolve(res.data);
+			});
+			return q.promise;
+		};
 
 		return o;
 	}

@@ -193,13 +193,13 @@ nav h3 {
   text-decoration: none !important;     /*      :(       */
   font-family: 'Indie Flower', cursive;
 }
-.deleteButton, .editButton {
+.deleteButton, .editButton, .upvote, .downvote {
   width: 2em;
   height: 2em;
   position: absolute;
   top: 1em;
   right: 1em;
-  background-color: #fff;
+  background-color: rgba(0,0,0,0);
   background-image: url("https://cdn3.iconfinder.com/data/icons/musthave/256/Remove.png");
   background-size: cover;
   z-index: 99999;
@@ -207,7 +207,8 @@ nav h3 {
 }
 .editButton {
   right: 4em;
-  background-image: url("https://cdn4.iconfinder.com/data/icons/simplicio/128x128/document_edit.png");
+  width: 1.9em;
+  background-image: url("http://www.mapcentia.com/images/icons/frontpage/edit.png");
 }
 .noclick {
   cursor: default !important;
@@ -217,6 +218,13 @@ nav h3 {
 }
 .highlight {
   border: solid 2px #f00;
+}
+.upvote {
+  background-image: url("http://findicons.com/files/icons/1609/ose_png/256/arrow_up.png");
+}
+.downvote {
+  right: 4em;
+  background-image: url("http://findicons.com/files/icons/1609/ose_png/256/arrow_down.png");
 }
 .text-left {
    text-align: justify;

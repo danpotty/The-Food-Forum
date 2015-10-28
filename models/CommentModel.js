@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var CommentPostSchema = new mongoose.Schema({
-  user: String,
+  author: String,
   date: Date,
   body: String,
   upvote: Number,

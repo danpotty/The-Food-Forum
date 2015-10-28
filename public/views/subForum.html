@@ -11,10 +11,10 @@
       <div class="row section" ng-click="vm.setCurrentTopic(z);" ui-sref="Topic" >
         <div>
           <h3>{{z.title}}</h3>
-          <h5>{{z.body}}</h5>
+          <h5>{{z.author}}</h5>
         </div>
       </div>
-      <div class="deleteButton" ng-click="vm.deleteTopic(z);"></div>
+      <div class="deleteButton" ng-if="nav.status.username === z.author" ng-click="vm.deleteTopic(z);"></div>
     </div>
 
 </div>
