@@ -86,6 +86,7 @@
 			vm.newComment.upvote = 0;
 			vm.newComment.date = new Date();
 			vm.newComment.votedOn = [];
+			vm.newComment.profilePic = UserFactory.status.profilePic;
 			CommentFactory.createComment(vm.newComment).then(function(){
 				vm.getCommentsByTopic(vm.currentTopic._id);
 				$state.go('Topic');

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html ng-app="app">
 
 <head>
@@ -45,12 +44,11 @@
 						<label>Password</label>
 						<input required type="password" style="width: 30%;" name="userPassword" ng-model="nav.user.password" minlength="5" />
 					</md-input-container>
-					<span ng-if="nav.err">{{nav.err}}</span>
+					<span ng-if="nav.err">{{nav.err}}<br/></span>
 					<md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
 					<hr>
 					<h6>Haven't joined our community yet?</h6>
 					<md-button type="button" ng-click="nav.overlayLogin(); nav.overlayRegister()">Sign Up</md-button>
-					<br>
 					<md-button type="button" ng-click="nav.overlayLogin()" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
 				</form>
 			</div>

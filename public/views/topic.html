@@ -26,7 +26,7 @@
 
     <hr>
     <div ng-show="!showComment">
-      <button type="button" class="btn btn-info" ng-click='showComment = true;'>Create new comment</button>
+      <button type="button" ng-show="nav.status.username" class="btn btn-info" ng-click='showComment = true;'>Create new comment</button>
       <button type="button" class="btn btn-danger" ui-sref="SubForum">Go Back</button>
     </div>
     <div ng-show="showComment">
@@ -47,13 +47,13 @@
 
         <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;" style="position: relative; text-align: center;">
           <div class="col-sm-2">
-            <div ng-if="nav.status.profilePic">
-              <img ng-src="nav.status.profilePic" alt="User Picture" style="height: 4em; width: 4em; margin: 1em 0 1em 4em;"/>
+            <div ng-if="c.profilePic">
+              <img ng-src="{{ c.profilePic }}" alt="User Picture" style="display: block; position: relative; height: auto; max-height: 7em; width: 5em; margin: 1em 2em;"/>
             </div>
-            <div ng-if="!nav.status.profilePic">
-              <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" style="display: block; height: 4em; width: 4em; margin: 1em 0 1em 4em;" />
+            <div ng-if="!c.profilePic">
+              <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" style="display: block; position: relative; height: auto;  max-height: 6em; width: 5em; margin: 1em 2em;" />
             </div>
-            <h5 style="display: block; padding-top: 6em;">{{c.author}}</h5>
+            <h5 style="display: block; padding-top: 2em;">{{c.author}}</h5>
             <p style="display: block; padding-top: .5em; font-size: .9em;">Posted: {{c.date | date:'MM/dd/yyyy HH:mma'}}</p>
             <p style="display: block; padding-top: .5em; font-size: .9em;">Votes: {{c.upvote}}</p>
           </div>
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-        <div ng-show="vm.editting && vm.selectedIndex === vm.comments.indexOf(c)">
+        <div ng-show="vm.editting && vm.selectedIndex === vm.comments.indexOf(c)" style="padding-bottom: 2em;">
           <textarea ng-model="c.body" style="height: 5em;"></textarea>
           <button type="button" class="btn btn-success" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.saveComment(c);" ng-disabled="!c.body">Save Changes</button>
           <button type="button" class="btn btn-danger" ng-click="vm.editting = false; vm.selectedIndex = 0; vm.getCommentsByTopic(vm.currentTopic._id)">Cancel</button>
