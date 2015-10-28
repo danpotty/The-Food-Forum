@@ -6,29 +6,33 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
 	<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
 
-<body ng-controller="GlobalController as nav" id="bodyId">
+<body ng-controller="GlobalController as nav">
 
 	<ui-view></ui-view>
+
+	<!-- Nav Menu -->
+
 	<nav>
-		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlay()' class="btn btn-success left">Login</button>
-		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-success left">{{nav.status.username}}</button>
+		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlayLogin()' class="btn btn-success left">Login</button>
+		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-primary left">{{nav.status.username}}</button>
 		<a ui-sref="Home" class="navLink">
 			<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
-			<h3 class="navLink">The Food Forum</h3>
+			<h3 class="navLink">Welcome To The Food Forum</h3>
 		</a>
-		<button ng-show="!nav.status.username" type="button" ui-sref="Register" class="btn btn-info right">Register</button>
+		<button ng-show="!nav.status.username" type="button" ng-click="nav.overlayRegister()" class="btn btn-info right">Register</button>
 		<button ng-show="nav.status.username" type="button" ng-click="nav.logoutUser()" class="btn btn-danger right">Logout</button>
 	</nav>
 
+	<!-- Login Modal -->
+
 	<div id="overlay-login">
-		<md-content layout-padding style="height: 90vh; background-color: rgba(0,0,0,.8);" ng-click="nav.overlay()">
-			<div class="container" style="background-color: white; margin-top: 5vw; z-index: 999999999;" onclick="event.cancelBubble=true;if(event.stopPropagation) event.stopPropagation();return false;">
-				<h1 style="margin-bottom: 1em;">Welcome back!</h1>
+		<md-content layout-padding style="height: 90vh; background-color: rgba(0,0,0,.8);">
+			<div class="container" style="background-color: white; margin-top: 5vw; z-index: 999999999;">
+				<h1 style="margin-bottom: 1em;">Log In</h1>
 				<hr>
 				<form name="loginForm" ng-submit="nav.loginUser()">
 					<md-input-container>
@@ -37,42 +41,67 @@
 					</md-input-container>
 					<md-input-container>
 						<label>Password</label>
-						<input required type="password"   style="width: 30%;" name="userPassword" ng-model="nav.user.password" minlength="5" />
+						<input required type="password" style="width: 30%;" name="userPassword" ng-model="nav.user.password" minlength="5" />
 					</md-input-container>
 					<span ng-if="nav.err">{{nav.err}}</span>
 					<md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
 					<hr>
 					<h6>Haven't joined our community yet?</h6>
-					<md-button type="button" ui-sref="Register">Sign Up</md-button>
+					<md-button type="button" ng-click="nav.overlayLogin(); nav.overlayRegister()">Sign Up</md-button>
 					<br>
-					<md-button type="button" ng-click="nav.overlay()" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
+					<md-button type="button" ng-click="nav.overlayLogin()" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
 				</form>
 			</div>
 		</md-content>
 	</div>
-	<!--
-	<div id="overlay-register">
-			 <md-content layout-padding>
-				 <span>[<a href='#' onclick='overlay()'>close</a>]</span>
-				 <h1>
-					 Welcome back!
-				 </h1>
-				 <form name="loginForm" ng-submit="nav.loginUser()">
-					 <md-input-container>
-						 <label>User Name</label>
-						 <input required name="username" ng-model="nav.user.username">
-					 </md-input-container>
-					 <md-input-container>
-						 <label>Password</label>
-						 <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
-					 </md-input-container>
-						 <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
-						 <hr>
-						 <h6>Haven't joined our community yet?</h6>
-						 <md-button type="button" ui-sref="Register">Sign Up</md-button>
-				 </form>
-			 </md-content>
-	</div> -->
+
+	<!-- Register Modal -->
+
+	<div layout="column"  layout-align="start center" flex="100" ng-cloak id="overlay-register">
+		<md-content layout-padding style="height: 90vh; background-color: rgba(0,0,0,.8);">
+			<div class="container" style="background-color: white; margin-top: 5vw; z-index: 999999999;">
+				<h1>Register</h1>
+				<hr>
+				<form name="registerUser" ng-submit="nav.registerUser()">
+					<div class="col-sm-6">
+						<md-input-container>
+							<label>User Name</label>
+							<input required name="username" ng-model="nav.user.username">
+						</md-input-container>
+						<md-input-container>
+							<label>Email Address</label>
+							<input required type="email" name="username" ng-model="nav.user.email">
+						</md-input-container>
+					</div>
+					<div class="col-sm-6">
+						<md-input-container>
+							<label>Password</label>
+							<input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
+						</md-input-container>
+						<md-input-container>
+							<label>Confirm Password</label>
+							<input required type="password" name="userPassword" ng-model="nav.user.confirmPassword" minlength="5" />
+						</md-input-container>
+					</div>
+					<br>
+					<div class="col-sm-12">
+						<div>
+							<div ng-show="!(nav.user.password === nav.user.confirmPassword)">Your passwords must match.</div>
+							<md-button type="submit" ng-disabled="!nav.user.username || !nav.user.email || !nav.user.password || !(nav.user.password === nav.user.confirmPassword)">Register</md-button>
+						</div>
+						<div>
+							<hr>
+							<h6>Already joined our community?</h6>
+							<md-button type="button" ng-click="nav.overlayLogin(); nav.overlayRegister()">Login</md-button>
+							<md-button type="button" ng-click="nav.overlayRegister()" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</md-content>
+
+	</div>
+
 
 	<!-- Ext Libs -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
