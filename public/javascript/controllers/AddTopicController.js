@@ -130,7 +130,7 @@
 			} else if (Vote === 0) {
 				comment.upvote -= 1;
 				// If Comment Has < -5 Votes, Delete Comment
-				if(comment.upvote == -2) {
+				if(comment.upvote == -5) {
 					vm.deleteComment(comment);
 					return;
 				}

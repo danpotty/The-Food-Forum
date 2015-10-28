@@ -1,5 +1,4 @@
 <div ng-controller='AddTopicController as vm' class="container" style="margin-bottom: 10em;">
-  <br>
   <h1 style="color: #333;">{{ vm.subForum }}</h1>
   <hr>
     <div>
@@ -15,7 +14,7 @@
         <div class="section" ng-click="vm.setCurrentTopic(z);" ui-sref="Topic" >
           <div class="row">
             <div class="col-sm-2" ng-if="z.url">
-              <img  ng-src="{{ z.url }}" ng-alt="{{ z.title }}" class="img img-responsive" style="width: 75%; height: auto; border: solid 2px #fff;" />
+              <img  ng-src="{{ z.url }}" ng-alt="{{ z.title }}" class="img img-responsive" style="position: relative; display: block; width: 75%; height: auto; border: solid 2px #fff;" />
             </div>
             <div class="col-sm-2" ng-if="!z.url"></div>
             <div class="col-sm-10" style="text-align: left;">
