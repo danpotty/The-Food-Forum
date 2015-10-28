@@ -6,11 +6,17 @@
 	function GlobalController(UserFactory, $state) {
 		var nav = this;
 		nav.user = {};
+		nav.err = false;
 		nav.status = UserFactory.status;
 
 		nav.loginUser = function(){
-			UserFactory.loginUser(nav.user).then(function(){
+			UserFactory.loginUser(nav.user).then(function(res){
+				console.log(res);
 				$state.go("Home");
+			}, function(err){
+				console.log(err);
+				nav.err = err;
+				// nav.err = true;
 			});
 		};
 

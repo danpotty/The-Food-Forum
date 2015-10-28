@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
+
 <body ng-controller="GlobalController as nav" id="bodyId">
 
 <ui-view></ui-view>
@@ -35,6 +36,7 @@
   	                <label>Password</label>
   	                <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
   	             </md-input-container>
+					 	<span ng-if="nav.err">{{nav.err}}</span>
   	                <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
   	                <hr>
   	                <h6>Haven't joined our community yet?</h6>
@@ -69,7 +71,6 @@
 	</div> -->
 
 	<!-- Ext Libs -->
-
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>

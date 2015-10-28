@@ -12,7 +12,9 @@
 			$http.post("/api/user/login", user).then(function(res){
 				setToken(res.data);
 				setUser();
-				q.resolve(res.data);
+				q.resolve(res);
+			}, function(res){
+				q.reject("Incorrect username and password combination.");
 			});
 			return q.promise;
 		};
@@ -96,7 +98,8 @@ if(token){
 			newBio: Obj,
 			userId: o.status._id
 		};
-		$http.post('/api/user', editObj).then(function(res){
+		$http.post('/api/user/bio', editObj).then(function(res){
+			o.status.bio = Obj;
 			q.resolve(res.data);
 		});
 		return q.promise;
@@ -108,7 +111,8 @@ if(token){
 			newPic: urlObject,
 			userId: o.status._id
 		};
-		$http.post('/api/user', picObj).then(function(res){
+		$http.post('/api/user/profilePic', picObj).then(function(res){
+			o.status.profilePic = urlObject;
 			q.resolve(res.data);
 		});
 		return q.promise;
