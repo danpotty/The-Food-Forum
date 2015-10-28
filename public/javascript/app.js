@@ -11,9 +11,6 @@ function Config($stateProvider, $urlRouterProvider,$httpProvider) {
 		.state('CreateTopic',{
 			url: '/createtopic',
 			templateUrl: 'views/createTopic.html'
-		}).state('EditComment',{
-			url: '/editcomment',
-			templateUrl: 'views/editComment.html'
 		}).state('Profile',{
 			url: '/profile',
 			templateUrl: 'views/profile.html'
@@ -23,12 +20,6 @@ function Config($stateProvider, $urlRouterProvider,$httpProvider) {
 		}).state('Topic',{
 			url: '/topic',
 			templateUrl: 'views/topic.html'
-		}).state('Login',{
-			url: '/login',
-			templateUrl: 'views/login.html'
-		}).state('Register',{
-			url: '/register',
-			templateUrl: 'views/register.html'
 		});
 		$urlRouterProvider.otherwise('/');
 		$httpProvider.interceptors.push("AuthInterceptor");

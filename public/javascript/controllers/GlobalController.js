@@ -33,14 +33,14 @@
 			$state.go("Home");
 		};
 
-		nav.overlayLogin = function() {
-			nav.el = document.getElementById("overlay-login");
-			nav.el.style.display = (nav.el.style.display == "block") ? "none" : "block";
+		nav.overlayLogin = function () {
+			var el = document.getElementById("overlay-login");
+			el.style.display = (el.style.display == "block") ? "none" : "block";
 		};
 
-		nav.overlayRegister = function() {
-			nav.el = document.getElementById("overlay-register");
-			nav.el.style.display = (nav.el.style.display == "block") ? "none" : "block";
+		nav.overlayRegister = function () {
+			var el = document.getElementById("overlay-register");
+			el.style.display = (el.style.display == "block") ? "none" : "block";
 		};
 	}
 })();
