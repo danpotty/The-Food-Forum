@@ -5,20 +5,22 @@
    </div>
   <div layout='row' flex>
     <div flex="35">
-      <img src='{{nav.status.profilePic}}' class="img-responsive"/>
+      <img src='{{vm.userInfo.profilePic}}' class="img-responsive"/>
       <button type="button" ng-show='!vm.updatePic' class="btn btn-success" ng-click="vm.updatePic = true">Update Profile Picture</button>
       <form ng-show="vm.updatePic" ng-submit='vm.updateProfilePic()'>
-        <input ng-model="vm.urlObj" placeholder='Paste url here'>
+        <input ng-model="vm.userInfo.profilePic" placeholder='Paste url here'>
         <button type="submit" class="btn btn-info" ng-click='vm.updatePic = false'>Submit Changes</button>
+        <button type="button" class="btn btn-danger" ng-click='vm.updatePic = false'>Cancel</button>
       </form>
     </div>
     <div flex="65" layout-padding="10">
-      <p>{{nav.status.bio}}</p>
+      <p>{{vm.userInfo.bio}}</p>
       <button class="btn btn-danger" ng-show='!vm.editing' ng-click='vm.editing = true'>Edit Bio</button>
       <br>
       <form ng-show='vm.editing' ng-submit='vm.updateBio()'>
-        <textarea ng-model='vm.bioObj' placeholder="Tell us about yourself!">{{nav.status.bio}}</textarea>
+        <textarea ng-model='vm.userInfo.bio' placeholder="Tell us about yourself!"></textarea>
         <button class="btn btn-info" type='submit' ng-click='vm.editing = false'>Submit Changes</button>
+        <button type="button" class="btn btn-danger" ng-click='vm.editing = false'>Cancel</button>
       </form><br>
       <span>Date joined: {{nav.status.dateJoined | date : shortDate}} 04/14/2015 | Last login: {{nav.status.lastLogin | date : shortDate}} 10/27/2015</span>
     </div>

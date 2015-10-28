@@ -30,6 +30,7 @@ UserSchema.methods.createToken = function(){
    return jwt.sign({
       _id: this._id,
       username: this.username,
+      bio: this.bio
    }, "ThisIsASecretCode");
 };
 
