@@ -31,5 +31,11 @@
 			$state.go("Home");
 		};
 
+		nav.overlay = function () {
+			var el = document.getElementById("overlay-login");
+			el.style.display = (el.style.display == "block") ? "none" : "block";
+		};
+
+
 	}
 })();
