@@ -90,6 +90,30 @@ if(token){
 		return q.promise;
 	};
 
+	o.updateBio = function(Obj){
+		var q = $q.defer();
+		var editObj = {
+			newBio: Obj,
+			userId: o.status._id
+		};
+		$http.post('/api/user', editObj).then(function(res){
+			q.resolve(res.data);
+		});
+		return q.promise;
+	};
+
+	o.updateProfilePic = function(urlObject){
+		var q = $q.defer();
+		var picObj = {
+			newPic: urlObject,
+			userId: o.status._id
+		};
+		$http.post('/api/user', picObj).then(function(res){
+			q.resolve(res.data);
+		});
+		return q.promise;
+	};
+
 
 		return o;
 	}
