@@ -23,6 +23,8 @@
 
 		nav.registerUser = function(){
 			UserFactory.registerUser(nav.user).then(function(){
+				nav.user = {};
+				nav.overlay();
 				$state.go("Home");
 			});
 		};
