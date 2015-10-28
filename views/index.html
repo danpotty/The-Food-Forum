@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="app">
+
 <head>
 	<title>The Food Forum</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,41 +13,44 @@
 
 <body ng-controller="GlobalController as nav" id="bodyId">
 
-<ui-view></ui-view>
+	<ui-view></ui-view>
 	<nav>
 		<button ng-show="!nav.status.username" type="button" onclick='overlay()' class="btn btn-success left">Login</button>
 		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-success left">{{nav.status.username}}</button>
 		<a ui-sref="Home" class="navLink">
-		<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
-		<h3 class="navLink">The Food Forum</h3>
+			<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
+			<h3 class="navLink">The Food Forum</h3>
 		</a>
 		<button ng-show="!nav.status.username" type="button" ui-sref="Register" class="btn btn-info right">Register</button>
 		<button ng-show="nav.status.username" type="button" ng-click="nav.logoutUser()" class="btn btn-danger right">Logout</button>
 	</nav>
 
 	<div id="overlay-login">
-  	       <md-content layout-padding>
-				 <h1 style="padding-top: 2em; margin-bottom: 1em;">Welcome back!</h1>
-  	          <form name="loginForm" ng-submit="nav.loginUser()">
-  	             <md-input-container>
-  	                <label>User Name</label>
-  	                <input required name="username" ng-model="nav.user.username">
-  	             </md-input-container>
-  	             <md-input-container>
-  	                <label>Password</label>
-  	                <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
-  	             </md-input-container>
-					 	<span ng-if="nav.err">{{nav.err}}</span>
-  	                <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
-  	                <hr>
-  	                <h6>Haven't joined our community yet?</h6>
-  	                <md-button type="button" ui-sref="Register">Sign Up</md-button>
-										<br>
-										<md-button type="button" onclick="overlay()" id="buttonFix" style="margin-bottom: 5em;">Cancel</md-button>
-  	          </form>
-  	       </md-content>
+		<md-content layout-padding style="height: 90vh; background-color: rgba(0,0,0,.8);">
+			<div class="container" style="background-color: white; margin-top: 5vw;">
+				<h1 style="margin-bottom: 1em;">Welcome back!</h1>
+				<hr>
+				<form name="loginForm" ng-submit="nav.loginUser()">
+					<md-input-container>
+						<label>User Name</label>
+						<input required name="username" ng-model="nav.user.username" style="width: 30%;">
+					</md-input-container>
+					<md-input-container>
+						<label>Password</label>
+						<input required type="password"   style="width: 30%;" name="userPassword" ng-model="nav.user.password" minlength="5" />
+					</md-input-container>
+					<span ng-if="nav.err">{{nav.err}}</span>
+					<md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
+					<hr>
+					<h6>Haven't joined our community yet?</h6>
+					<md-button type="button" ui-sref="Register">Sign Up</md-button>
+					<br>
+					<md-button type="button" onclick="overlay()" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
+				</form>
+			</div>
+		</md-content>
 	</div>
-<!--
+	<!--
 	<div id="overlay-register">
 			 <md-content layout-padding>
 				 <span>[<a href='#' onclick='overlay()'>close</a>]</span>
@@ -74,7 +78,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
- 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.js"></script>
 	<!-- Global Src -->
 	<script src="/javascript/app.js"></script>
@@ -92,4 +96,5 @@
 	<script src="/javascript/controllers/ProfileController.js"></script>
 
 </body>
+
 </html>
