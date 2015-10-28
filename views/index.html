@@ -37,7 +37,7 @@
   	                <label>Password</label>
   	                <input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
   	             </md-input-container>
-					 	<div ng-show="nav.error">Your passwords must match.</div>
+					 	<span ng-if="nav.err">{{nav.err}}</span>
   	                <md-button type="submit" ng-disabled="!nav.user.username || !nav.user.password">Login</md-button>
   	                <hr>
   	                <h6>Haven't joined our community yet?</h6>
