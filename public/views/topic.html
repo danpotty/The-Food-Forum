@@ -1,13 +1,12 @@
 <div ng-controller='AddTopicController as vm' class="container" style="margin-bottom: 10em;">
-  <br>
   <div class="forumContainer">
     <div class="sectionHead">
       <h2>Topic</h2>
     </div>
 
-    <div class="row section">
+    <div class="row section noclick nohighlight">
       <div ng-if="vm.currentTopic.url" class="col-sm-3">
-        <img ng-src="{{vm.currentTopic.url}}" alt="Topic Picture" class="img img-responsive" style="width: 75%; height: auto; border: solid 2px #fff;" />
+        <img ng-src="{{vm.currentTopic.url}}" alt="Topic Picture" class="img img-responsive" style="position: relative; display: block; width: 75%; height: auto; margin: 1em 0; border: solid 2px #fff;" />
         <br>
       </div>
       <div ng-if="!vm.currentTopic.url" class="col-sm-3">
@@ -17,7 +16,7 @@
       <div class="col-sm-9" style="text-align: left;">
         <h3 style="color:#f90; margin-bottom: 0;">{{ vm.currentTopic.title }}</h3>
         <h5>{{ vm.currentTopic.author}}</h5>
-        <h5>{{ vm.currentTopic.createdOn | date:'MM/dd/yyyy HH:mma' }}</h5>
+        <h5>{{ vm.currentTopic.createdOn | date:'MM/dd/yyyy HH:mm a' }}</h5>
         <br>
         <p>{{ vm.currentTopic.body }}</p>
         <br>

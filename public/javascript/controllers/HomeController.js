@@ -13,5 +13,9 @@
 			});
 		};
 
+		vm.console = function(something) {
+			console.log(something);
+		};
+
 	}
 })();

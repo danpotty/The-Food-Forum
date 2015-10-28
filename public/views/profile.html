@@ -8,7 +8,7 @@
       <img src='{{nav.status.profilePic}}' class="img-responsive"/>
       <button type="button" ng-show='!vm.updatePic' class="btn btn-success" ng-click="vm.updatePic = true">Update Profile Picture</button>
       <form ng-show="vm.updatePic" ng-submit='vm.updateProfilePic()'>
-        <input ng-model="vm.urlObj" placeholder='Paste url here'></input>
+        <input ng-model="vm.urlObj" placeholder='Paste url here'>
         <button type="submit" class="btn btn-info" ng-click='vm.updatePic = false'>Submit Changes</button>
       </form>
     </div>

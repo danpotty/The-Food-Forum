@@ -9,7 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
-<body ng-controller="GlobalController as nav">
+
+<body ng-controller="GlobalController as nav" id="bodyId">
+
 <ui-view></ui-view>
 	<nav>
 		<button ng-show="!nav.status.username" type="button" onclick='overlay()' class="btn btn-success left">Login</button>
@@ -24,10 +26,7 @@
 
 	<div id="overlay-login">
   	       <md-content layout-padding>
-				 <span>[<a href='#' onclick='overlay()' style="color:black;">X</a>]</span>
-				 <h1>
-  	             Welcome back!
-  	          </h1>
+				 <h1 style="padding-top: 2em; margin-bottom: 1em;">Welcome back!</h1>
   	          <form name="loginForm" ng-submit="nav.loginUser()">
   	             <md-input-container>
   	                <label>User Name</label>
@@ -42,6 +41,8 @@
   	                <hr>
   	                <h6>Haven't joined our community yet?</h6>
   	                <md-button type="button" ui-sref="Register">Sign Up</md-button>
+										<br>
+										<md-button type="button" onclick="overlay()" id="buttonFix" style="margin-bottom: 5em;">Cancel</md-button>
   	          </form>
   	       </md-content>
 	</div>

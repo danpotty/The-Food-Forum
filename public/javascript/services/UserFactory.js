@@ -5,7 +5,7 @@
 
 	function UserFactory($http, $q) {
 		var o = {};
-		o.status ={};
+		o.status = {};
 
 		o.loginUser = function(user){
 			var q = $q.defer();
