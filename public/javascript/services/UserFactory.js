@@ -131,7 +131,15 @@ if(token){
 		return q.promise;
 	};
 
-	// 
+	// o.bgChange= function(){
+	// 	o.num = (Math.floor(Math.random()*4));
+	// 	o.array = ['one', 'two', 'three', 'four'];
+	// 	o.elem = document.getElementsByClassName('bg');
+	// 	o.elem.classList.add(array[num]);
+	// };
+
+
+	//
 	// o.randombgs=["/assets/food1.jpg", "/assets/food2.jpg", "/assets/food3.jpg"];
 	// document.body.style.background='white url('+Math.floor(Math.random()*randombgs.length)]+')')
 

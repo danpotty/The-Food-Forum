@@ -9,6 +9,15 @@
 	<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
+<!-- <script>
+bgChange= function(){
+num = (Math.floor(Math.random()*4));
+array = ['/assets/food1.jpg', 'assets/food2.jpg', '/assets/food3.jpg', 'assets/food4.jpg'];
+// elem = document.getElementById('body');
+document.body.style.backgroundImage = "url('array[num]')";
+// elem.classList.add(array[num]);
+};
+	</script> -->
 
 
 <body ng-controller="GlobalController as nav">
@@ -18,14 +27,14 @@
 	<!-- Nav Menu -->
 
 	<nav>
-		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlayLogin()' class="btn btn-nav left">Login</button>
-		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-nav left">{{nav.status.username}}</button>
+		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlayLogin()' class="btn btn-nav left btn-big">Login</button>
+		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-nav left btn-big">{{nav.status.username}}</button>
 		<a ui-sref="Home" class="navLink">
 			<img src="/assets/logo.png" alt="Pineapple Logo" />
 			<h3 class="navLink">Welcome To The Food Forum</h3>
 		</a>
-		<button ng-show="!nav.status.username" type="button" ng-click="nav.overlayRegister()" class="btn btn-nav right">Register</button>
-		<button ng-show="nav.status.username" type="button" ng-click="nav.logoutUser()" class="btn btn-logout right">Logout</button>
+		<button ng-show="!nav.status.username" type="button" ng-click="nav.overlayRegister()" class="btn btn-nav right  btn-big">Sign Up</button>
+		<button ng-show="nav.status.username" type="button" ng-click="nav.logoutUser()" class="btn btn-logout right  btn-big">Logout</button>
 	</nav>
 
 	<!-- Login Modal -->

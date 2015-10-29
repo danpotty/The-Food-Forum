@@ -2,7 +2,7 @@
   <div layout='column' layout-padding layout-wrap layout-fill layout-align="start center" flex="100" ng-cloak style="color: #333;">
     <div class="container">
       <div>
-        <h1>{{nav.status.username | uppercase}}'S PROFILE</h1>
+        <h2>{{nav.status.username | uppercase}}'S PROFILE</h2>
       </div>
       <hr>
       <div class="row profile">
@@ -19,7 +19,7 @@
           <hr>
           <span>Date joined: {{nav.status.dateJoined | date : shortDate}} 04/14/2015 | Last login: {{nav.status.lastLogin | date : shortDate}} 10/27/2015</span>
         </div>
-        <div class="col-sm-7 profileText">
+        <div class="col-sm-7">
           <br>
           <form ng-show='vm.editing' ng-submit='vm.updateBio()'>
             <button class="btn btn-nav" type='submit' ng-click='vm.editing = false'>Submit Changes</button>
