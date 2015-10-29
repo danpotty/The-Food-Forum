@@ -3,7 +3,7 @@
 	angular.module('app')
 	.controller('GlobalController', GlobalController);
 
-	function GlobalController(UserFactory, $state) {
+	function GlobalController(UserFactory, $state, $rootScope) {
 		var nav = this;
 		nav.user = {};
 		nav.errLog = false;
@@ -54,10 +54,6 @@
 			var el = document.getElementById("overlay-register");
 			el.style.display = (el.style.display == "block") ? "none" : "block";
 		};
-
-		// function bgChange(){
-		// 	UserFactory.bgChange();
-		// }
 
 	}
 })();

@@ -2,7 +2,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 @import url(https://fonts.googleapis.com/css?family=Monoton);
-
 @font-face {
     font-family: 'Vonique'; /*a name to be used later*/
     src: url('/assets/Vonique_64_Bold.ttf'); /*URL to font*/
@@ -19,6 +18,7 @@
     font-family: 'Monterey'; /*a name to be used later*/
     src: url('/assets/MontereyFLF-Bold.ttf'); /*URL to font*/
 }
+
 /* Globals */
 body, html {
   margin: 0;
@@ -26,7 +26,9 @@ body, html {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   position: relative;
-  background: url("/assets/food1.jpg");
+  /*background: url("/assets/food1.jpg");*/
+  background: url("http://s23.postimg.org/c718j6dnv/bgdark.jpg");
+  /*background: url("http://s23.postimg.org/7wmknl8kr/bgwhite.jpg");*/
   background-size: cover;
   background-attachment: fixed;
   color: #fff;
@@ -415,22 +417,3 @@ img.commentPic {
    }
 
 }
-
-/* RANDOM G+BG */
-/*@import "compass/css3";
-
-.one {
-  background: url("/assets/food1.jpg");
-}
-
-.two {
-  background: url("/assets/food2.jpg");
-}
-
-.three {
- background: url("/assets/food3.jpg")
-}
-
-.four {
-background: url('/assets/food4.jpg');
-}*/
