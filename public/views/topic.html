@@ -6,11 +6,11 @@
 
     <div class="row section noclick nohighlight">
       <div ng-if="vm.currentTopic.url" class="col-sm-3">
-        <img ng-src="{{vm.currentTopic.url}}" alt="Topic Picture" class="img img-responsive" style="position: relative; display: block; width: 75%; height: auto; margin: 1em 0; border: solid 2px #fff;" />
+        <img ng-src="{{vm.currentTopic.url}}" alt="Topic Picture" class="img img-responsive" id="topicPic" />
         <br>
       </div>
       <div ng-if="!vm.currentTopic.url" class="col-sm-3">
-        <img src="https://exposingtheinvisible.org/media/missing.png" alt="No Picture" class="img-responsive" style="position: relative; display: block; width: 75%; height: auto; margin: 1em 0; border: solid 2px #fff;" />
+        <img src="https://exposingtheinvisible.org/media/missing.png" alt="No Picture" class="img img-responsive" id="topicPic" />
       </div>
 
       <div class="col-sm-9" style="text-align: left;">
@@ -45,21 +45,30 @@
 
       <div class="row section noclick nohighlight" ng-repeat='c in vm.comments'>
 
-        <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;" style="position: relative; text-align: center;">
+        <div ng-show="!vm.editting || vm.comments.indexOf(c) != vm.selectedIndex;" style="text-align: center;">
+
           <div class="col-sm-2">
-            <div ng-if="c.profilePic">
-              <img ng-src="{{ c.profilePic }}" alt="User Picture" style="display: block; position: relative; height: auto; max-height: 7em; width: 5em; margin: 1em 2em;"/>
+
+            <div ng-if="c.profilePic" style="display: block; text-align: center;">
+              <img ng-src="{{ c.profilePic }}" alt="User Picture" class="commentPic" />
             </div>
-            <div ng-if="!c.profilePic">
-              <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" style="display: block; position: relative; height: auto;  max-height: 6em; width: 5em; margin: 1em 2em;" />
+
+            <div ng-if="!c.profilePic" style="display: block; text-align: center;">
+              <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Question_mark_liberal.jpg" alt="No Picture" class="commentPic" />
             </div>
+
+            <br>
+
             <h5 style="display: block; padding-top: 0;">{{c.author}}</h5>
             <p style="display: block; padding-top: .5em; font-size: .9em;">Posted: {{c.date | date:'MM/dd/yyyy HH:mma'}}</p>
             <p style="display: block; padding-top: .5em; font-size: .9em;">Votes: {{c.upvote}}</p>
+
           </div>
+
           <div class="col-sm-10" style="height: 14em; border-left: solid 1px #888; text-align: left;">
             <p>{{c.body}}</p>
           </div>
+
         </div>
 
         <div ng-show="vm.editting && vm.selectedIndex === vm.comments.indexOf(c)" style="padding-bottom: 2em;">

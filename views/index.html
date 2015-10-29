@@ -32,7 +32,7 @@
 
 	<div id="overlay-login">
 		<md-content layout-padding style="height: 90vh; background-color: rgba(0,0,0,.8);" ng-click="nav.overlayLogin()"></md-content>
-		<div class="container" style="position: fixed; z-index: 9999999999999; background-color: white; top: 15vh; left: 22.5vw; color: #333;">
+		<div class="container overlayBody">
 			<h1 style="margin-bottom: 1em;">Welcome back!</h1>
 			<hr>
 			<form name="loginForm" ng-submit="nav.loginUser()">
@@ -58,48 +58,49 @@
 	<!-- Register Modal -->
 
 	<div layout="column"  layout-align="start center" flex="100" ng-cloak id="overlay-register">
-		<md-content layout-padding style="height: 90vh; background-color: rgba(0,0,0,.8);" ng-click="nav.overlayRegister()"></md-content>
-		<div class="container" style="position: fixed; z-index: 9999999999999; background-color: white; top: 15vh; left: 22.5vw; color: #333;">
-			<h1>Register</h1>
-			<hr>
-			<form name="registerUser" ng-submit="nav.registerUser()">
-				<div class="col-sm-6">
-					<md-input-container>
-						<label>User Name</label>
-						<input required name="username" ng-model="nav.user.username">
-					</md-input-container>
-					<md-input-container>
-						<label>Email Address</label>
-						<input required type="email" name="username" ng-model="nav.user.email">
-					</md-input-container>
-				</div>
-				<div class="col-sm-6">
-					<md-input-container>
-						<label>Password</label>
-						<input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
-					</md-input-container>
-					<md-input-container>
-						<label>Confirm Password</label>
-						<input required type="password" name="userPassword" ng-model="nav.user.confirmPassword" minlength="5" />
-					</md-input-container>
-				</div>
-				<br>
-				<div class="col-sm-12">
-					<div>
-						<span ng-if="nav.errReg">{{nav.errReg}}<br/></span>
-						<div ng-show="!(nav.user.password === nav.user.confirmPassword)">Your passwords must match.</div>
-						<md-button type="submit" ng-disabled="!nav.user.username || !nav.user.email || !nav.user.password || !(nav.user.password === nav.user.confirmPassword)">Register</md-button>
+		<md-content style="height: 90vh; background-color: rgba(0,0,0,.8);" ng-click="nav.overlayRegister()"></md-content>
+		<div class="overlayBody container">
+			<div class="">
+				<h1>Register</h1>
+				<hr>
+				<form name="registerUser" ng-submit="nav.registerUser()">
+					<div class="col-sm-6">
+						<md-input-container>
+							<label>User Name</label>
+							<input required name="username" ng-model="nav.user.username">
+						</md-input-container>
+						<md-input-container>
+							<label>Email Address</label>
+							<input required type="email" name="username" ng-model="nav.user.email">
+						</md-input-container>
 					</div>
-					<hr>
-					<div>
-						<h6>Already joined our community?</h6>
-						<md-button type="button" ng-click="nav.overlayRegister(); nav.overlayLogin()">Login</md-button>
-						<md-button type="button" ng-click="nav.overlayRegister();" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
+					<div class="col-sm-6">
+						<md-input-container>
+							<label>Password</label>
+							<input required type="password" name="userPassword" ng-model="nav.user.password" minlength="5" />
+						</md-input-container>
+						<md-input-container>
+							<label>Confirm Password</label>
+							<input required type="password" name="userPassword" ng-model="nav.user.confirmPassword" minlength="5" />
+						</md-input-container>
 					</div>
-				</div>
-			</form>
+					<br>
+					<div class="col-sm-12">
+						<div>
+							<span ng-if="nav.errReg">{{nav.errReg}}<br/></span>
+							<div ng-show="!(nav.user.password === nav.user.confirmPassword)">Your passwords must match.</div>
+							<md-button type="submit" ng-disabled="!nav.user.username || !nav.user.email || !nav.user.password || !(nav.user.password === nav.user.confirmPassword)">Register</md-button>
+						</div>
+						<hr>
+						<div>
+							<h6>Already joined our community?</h6>
+							<md-button type="button" ng-click="nav.overlayRegister(); nav.overlayLogin()">Login</md-button>
+							<md-button type="button" ng-click="nav.overlayRegister();" id="buttonFix" style="margin-bottom: 2em;">Cancel</md-button>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
-
 	</div>
 
 
