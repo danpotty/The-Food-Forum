@@ -18,14 +18,14 @@
 	<!-- Nav Menu -->
 
 	<nav>
-		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlayLogin()' class="btn btn-success left">Login</button>
-		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-primary left">{{nav.status.username}}</button>
+		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlayLogin()' class="btn btn-nav left">Login</button>
+		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-nav left">{{nav.status.username}}</button>
 		<a ui-sref="Home" class="navLink">
-			<img src="http://images.clipartpanda.com/pineapple-clip-art-McLB9dEca.gif" alt="Pineapple Picture" />
+			<img src="/assets/logo.png" alt="Pineapple Logo" />
 			<h3 class="navLink">Welcome To The Food Forum</h3>
 		</a>
-		<button ng-show="!nav.status.username" type="button" ng-click="nav.overlayRegister()" class="btn btn-info right">Register</button>
-		<button ng-show="nav.status.username" type="button" ng-click="nav.logoutUser()" class="btn btn-danger right">Logout</button>
+		<button ng-show="!nav.status.username" type="button" ng-click="nav.overlayRegister()" class="btn btn-nav right">Register</button>
+		<button ng-show="nav.status.username" type="button" ng-click="nav.logoutUser()" class="btn btn-logout right">Logout</button>
 	</nav>
 
 	<!-- Login Modal -->
