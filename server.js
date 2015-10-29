@@ -15,7 +15,13 @@ require("./models/CommentModel");
 require("./config/passport");
 
 // mongoose.connect(process.env.MONGO_STRING);
-mongoose.connect("mongodb://localhost/FoodForum");
+var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
+console.log(database);
+mongoose.connect(database, function(err){
+	console.log("Connect");
+	if(err) return console.log('error connecting to %s', database);
+	console.log('connected to %s', database);
+});
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client

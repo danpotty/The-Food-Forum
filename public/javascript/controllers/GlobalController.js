@@ -54,5 +54,10 @@
 			var el = document.getElementById("overlay-register");
 			el.style.display = (el.style.display == "block") ? "none" : "block";
 		};
+
+		// function bgChange(){
+		// 	UserFactory.bgChange();
+		// }
+
 	}
 })();

@@ -1,8 +1,24 @@
 /* Fonts */
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+@import url(https://fonts.googleapis.com/css?family=Monoton);
 
-
+@font-face {
+    font-family: 'Vonique'; /*a name to be used later*/
+    src: url('/assets/Vonique_64_Bold.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Libro'; /*a name to be used later*/
+    src: url('/assets/Libro.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Optien'; /*a name to be used later*/
+    src: url('/assets/Optien.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Monterey'; /*a name to be used later*/
+    src: url('/assets/MontereyFLF-Bold.ttf'); /*URL to font*/
+}
 /* Globals */
 body, html {
   margin: 0;
@@ -10,7 +26,7 @@ body, html {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   position: relative;
-  background: url("http://s13.postimg.org/5et87aqlz/image.jpg");
+  background: url("/assets/food1.jpg");
   background-size: cover;
   background-attachment: fixed;
   color: #fff;
@@ -27,17 +43,20 @@ a h3:hover {
 
 /* Headings */
 h1 {
-  font-family: 'Indie Flower', cursive;
-  color: #333;
-  font-size: 3em;
+  font-family: 'Monterey';
+  color: #000000;
+  font-size: 3.5em;
   margin: 0 auto;
   padding: 1.5em 0 0 0;
-  font-family: 'Indie Flower', cursive;
-
+  /*font-family: 'Optien', cursive;*/
+  text-shadow: 1px 1px 4px #ffffff;
 }
 h2 {
+   font-family: 'Monterey';
+   color: #000000;
+   font-size: 2.5em;
   margin: .5em auto;
-  font-family: 'Indie Flower', cursive;
+  text-shadow: 1px 1px 4px #ffffff;
 }
 h3 {
   display: inline-block;
@@ -48,12 +67,12 @@ h3 {
   font-size: 1.2em;
 }
 h5{
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Raleway', cursive;
 }
 
 /* Inputs */
 button {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Raleway', cursive;
 }
 input {
   margin: .5em auto;
@@ -63,8 +82,9 @@ input {
   padding: .5em;
   font-family: 'Raleway', sans-serif;
   outline: none;
-  background: rgba(0,0,0,.5);
+  background: rgba(25, 29, 42, 0.5);
   color: #fff;
+  text-shadow: 1px 1px #000000;
   border: solid 1px #fff;
 }
 textarea {
@@ -76,8 +96,9 @@ textarea {
   font-family: 'Raleway', sans-serif;
   padding: .5em;
   outline: none;
-  background: rgba(0,0,0,.5);
+  background: rgba(25, 29, 42, 0.5);
   color: #fff;
+  text-shadow: 1px 1px #000000;
   border: solid 1px #fff;
 }
 
@@ -86,7 +107,7 @@ nav {
   width: 100%;
   border-top: solid 1px #f90;
   box-shadow: 0px 0px 10px rgba(0,0,0,.5);
-  background-color: #000;
+  background-color: rgba(22, 27, 42, 1);
   position: fixed;
   bottom: 0;
   height: 10vh;
@@ -104,6 +125,7 @@ nav h3 {
 
 
 /* Classes */
+
 .container {
   position: relative;
 }
@@ -128,13 +150,15 @@ nav h3 {
   box-shadow: 0px 0px 15px rgba(0,0,0,.2);
   margin: 1em auto;
 }
-.section, .topicContainer {
-  background: rgba(0,0,0,.75);
+.section, .topicContainer, .profile {
+  background: rgba(25, 29, 42, 0.9);
   border-top: 1px solid #777;
   border-bottom: 1px solid #777;
   position: relative;
   padding-top: 1em;
   min-height: 5.5em;
+  color: #fff;
+  text-shadow: 1px 1px #000000;
 }
 .section img {
   display: inline;
@@ -145,7 +169,7 @@ nav h3 {
   margin: 0;
 }
 .section:hover {
-  background: rgba(0,0,0,.3);
+  background: rgba(25, 29, 42, 0.6);
   cursor: pointer;
 }
 .sectionHead {
@@ -163,11 +187,20 @@ nav h3 {
   max-width: 6em;
   max-height: 6em;
 }
-.btn-info {
-  background: #f90;
+.btn-big{
+   font-family: 'Optien';
 }
-.btn-info:hover {
+.btn-nav {
+   background: #f90;
+}
+.btn-nav:hover {
   background: #E60;
+}
+.btn-logout {
+   background: #2d3142;
+}
+.btn-logout:hover {
+   background: #272933;
 }
 .topic {
   border: solid 1px white;
@@ -181,7 +214,7 @@ nav h3 {
 }
 .navLink {
   text-decoration: none !important;     /*      :(       */
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Raleway';
 }
 .deleteButton, .editButton, .upvote, .downvote {
   width: 2em;
@@ -190,7 +223,7 @@ nav h3 {
   top: 1em;
   right: 1em;
   background-color: rgba(0,0,0,0);
-  background-image: url("https://cdn3.iconfinder.com/data/icons/musthave/256/Remove.png");
+  background-image: url("/assets/cancel.png");
   background-size: cover;
   z-index: 99999;
   cursor: pointer;
@@ -198,7 +231,7 @@ nav h3 {
 .editButton {
   right: 4em;
   width: 1.9em;
-  background-image: url("http://www.mapcentia.com/images/icons/frontpage/edit.png");
+  background-image: url("/assets/edit.png");
 }
 .noclick {
   cursor: default !important;
@@ -210,11 +243,11 @@ nav h3 {
   border: solid 2px #f00;
 }
 .upvote {
-  background-image: url("http://findicons.com/files/icons/1609/ose_png/256/arrow_up.png");
+  background-image: url("/assets/up.png");
 }
 .downvote {
   right: 4em;
-  background-image: url("http://findicons.com/files/icons/1609/ose_png/256/arrow_down.png");
+  background-image: url("/assets/down.png");
 }
 .text-left {
    text-align: justify;
@@ -382,3 +415,22 @@ img.commentPic {
    }
 
 }
+
+/* RANDOM G+BG */
+/*@import "compass/css3";
+
+.one {
+  background: url("/assets/food1.jpg");
+}
+
+.two {
+  background: url("/assets/food2.jpg");
+}
+
+.three {
+ background: url("/assets/food3.jpg")
+}
+
+.four {
+background: url('/assets/food4.jpg');
+}*/
