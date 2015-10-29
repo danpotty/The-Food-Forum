@@ -26,7 +26,7 @@
 				setUser();
 				q.resolve(res.data);
 			}, function(res){
-				q.reject("Username or password has already been used. Try a new one.");
+				q.reject("Username or email address has already been used. Try a new one.");
 			});
 			return q.promise;
 		};
@@ -81,7 +81,6 @@ var token = getToken();
 o.status = {};
 if(token){
 	var user = o.getUser();
-	console.log(user);
 	o.status.username = user.username;
 	o.status._id = user._id;
 	o.status.bio = user.bio;
@@ -132,6 +131,9 @@ if(token){
 		return q.promise;
 	};
 
+	// 
+	// o.randombgs=["/assets/food1.jpg", "/assets/food2.jpg", "/assets/food3.jpg"];
+	// document.body.style.background='white url('+Math.floor(Math.random()*randombgs.length)]+')')
 
 		return o;
 	}

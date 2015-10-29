@@ -4,14 +4,14 @@
     <hr>
     <h4 style="color: #333;">{{ nav.subForum }}</h4>
     <br>
-    <input type="text" placeholder="Topic***" required ng-model="vm.newTopic.title">
+    <input type="text" placeholder="Topic (required)" required ng-model="vm.newTopic.title">
     <br>
     <input type="text" placeholder="Image URL" ng-model="vm.newTopic.url">
     <br>
     <textarea rows="8" cols="40" placeholder="Body" ng-model="vm.newTopic.body"></textarea>
     <hr>
-    <button type="submit" class="btn btn-success">Create Topic</button>
-    <button type="button" class="btn btn-danger" ui-sref="SubForum">Cancel</button>
+    <button type="submit" class="btn btn-nav">Create Topic</button>
+    <button type="button" class="btn btn-logout" ui-sref="SubForum">Cancel</button>
   </form>
 
 </div>
