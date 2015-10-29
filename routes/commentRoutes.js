@@ -7,7 +7,7 @@ var passport = require('passport');
 
 // Get Comments By Topic
 router.get("/:id", function(req, res, next) {
-  Comment.find({topicid: req.params.id}).exec(function(err,result) {
+  Comment.find({topicid: req.params.id}).sort({date: 'ascending'}).exec(function(err,result) {
     if(err) return next(err);
     res.send(result);
   });

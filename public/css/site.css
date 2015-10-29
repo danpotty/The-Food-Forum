@@ -269,3 +269,34 @@ nav h3 {
      text-align:center;
      z-index: 99999999000;
 }
+
+
+/* ---------------------- Responsive Fixes ---------------------- */
+
+@media screen and (max-height: 950px) {
+    nav {
+      height: 15vh !important;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    nav {
+      height: 20vh !important;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    nav {
+      height: 30vh !important;
+    }
+}
+@media screen and (max-width: 650px) {
+    nav .btn {
+      width: 30%;
+      font-size: 1.3em;
+    }
+
+    h3.navLink {
+      display: none;
+    }
+}

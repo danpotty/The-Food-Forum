@@ -11,11 +11,7 @@
 			GlobalFactory.setSubForum(subforum).then(function() {
 				$state.go("SubForum");
 			});
-		};
-
-		vm.console = function(something) {
-			console.log(something);
-		};
+		};		
 
 	}
 })();

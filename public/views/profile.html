@@ -1,35 +1,38 @@
 <div ng-controller='ProfileController as vm'>
-<div layout='column' layout-padding layout-wrap layout-fill layout-align="start center" flex="100" ng-cloak style="color: #333">
-   <div>
-      <h1>{{nav.status.username | uppercase}}'S PROFILE</h1>
-   </div>
-  <div layout='row' flex>
-    <div flex="35">
-      <img src='{{vm.userInfo.profilePic || "https://pbs.twimg.com/profile_images/571009371593666560/H8BnOWbx.jpeg"}}' class="img-responsive"/>
-      <button type="button" ng-show='!vm.updatePic' class="btn btn-success" ng-click="vm.updatePic = true">Update Profile Picture</button>
-      <form ng-show="vm.updatePic" ng-submit='vm.updateProfilePic()'>
-        <input ng-model="vm.userInfo.profilePic" placeholder='Paste url here'>
-        <button type="submit" class="btn btn-info" ng-click='vm.updatePic = false'>Submit Changes</button>
-        <button type="button" class="btn btn-danger" ng-click='vm.updatePic = false'>Cancel</button>
-      </form>
+  <div layout='column' layout-padding layout-wrap layout-fill layout-align="start center" flex="100" ng-cloak style="color: #333;">
+    <div class="container">
+      <div>
+        <h1>{{nav.status.username | uppercase}}'S PROFILE</h1>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-5">
+          <img src='{{vm.userInfo.profilePic || "https://pbs.twimg.com/profile_images/571009371593666560/H8BnOWbx.jpeg"}}' class="img-responsive" style="position: relative; display: block; margin: 0 auto;" />
+          <br>
+          <br>
+          <button type="button" ng-show='!vm.updatePic' class="btn btn-success" ng-click="vm.updatePic = true">Update Profile Picture</button>
+          <form ng-show="vm.updatePic" ng-submit='vm.updateProfilePic()'>
+            <input ng-model="vm.userInfo.profilePic" placeholder='Paste url here' style="width: 50%;">
+            <button type="submit" class="btn btn-info" ng-click='vm.updatePic = false'>Submit Changes</button>
+            <button type="button" class="btn btn-danger" ng-click='vm.updatePic = false'>Cancel</button>
+          </form>
+          <hr>
+          <span>Date joined: {{nav.status.dateJoined | date : shortDate}} 04/14/2015 | Last login: {{nav.status.lastLogin | date : shortDate}} 10/27/2015</span>
+        </div>
+        <div class="col-sm-7">
+          <button class="btn btn-danger" ng-show='!vm.editing' ng-click='vm.editing = true'>Edit Bio</button>
+          <br>
+          <form ng-show='vm.editing' ng-submit='vm.updateBio()'>
+            <button class="btn btn-info" type='submit' ng-click='vm.editing = false'>Submit Changes</button>
+            <button type="button" class="btn btn-danger" ng-click='vm.editing = false'>Cancel</button>
+            <textarea ng-model='vm.userInfo.bio' placeholder="Tell us about yourself!"></textarea>
+          </form>
+          <br>
+          <p>{{vm.userInfo.bio}}</p>
+          <br>
+        </div>
+      </div>
     </div>
-    <div flex="65" layout-padding="10">
-      <p>{{vm.userInfo.bio}}</p>
-      <button class="btn btn-danger" ng-show='!vm.editing' ng-click='vm.editing = true'>Edit Bio</button>
-      <br>
-      <form ng-show='vm.editing' ng-submit='vm.updateBio()'>
-        <textarea ng-model='vm.userInfo.bio' placeholder="Tell us about yourself!"></textarea>
-        <button class="btn btn-info" type='submit' ng-click='vm.editing = false'>Submit Changes</button>
-        <button type="button" class="btn btn-danger" ng-click='vm.editing = false'>Cancel</button>
-      </form><br>
-      <span>Date joined: {{nav.status.dateJoined | date : shortDate}} 04/14/2015 | Last login: {{nav.status.lastLogin | date : shortDate}} 10/27/2015</span>
-    </div>
+
   </div>
-  <div class="text-left">
-     <h3>Recent Topics Posted</h3>
-     <ul>
-        <li ng-repeat="topic in vm.topics">{{nav.status.topics}}</li>
-     </ul>
-  </div>
-</div>
 </div>
