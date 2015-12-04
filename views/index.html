@@ -20,7 +20,7 @@
 	<nav>
 		<button ng-show="!nav.status.username" type="button" ng-click='nav.overlayLogin()' class="btn btn-nav left btn-big">Login</button>
 		<button ng-show="nav.status.username" type="button" ui-sref="Profile" class="btn btn-nav left btn-big">{{nav.status.username}}</button>
-		<a ui-sref="Home" class="navLink">
+		<a ui-sref="Home" class="navLink"><br/><br/>
 			<h3 class="navLink">Welcome To The Food Forum</h3>
 		</a>
 		<button ng-show="!nav.status.username" type="button" ng-click="nav.overlayRegister()" class="btn btn-nav right  btn-big">Sign Up</button>
